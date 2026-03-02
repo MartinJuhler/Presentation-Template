@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentations — Martin Juhler</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0e1a;
+            color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .project {
+            background: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-icon {
+            font-size: 1.5rem;
+        }
+
+        .project-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .project-desc {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid #1e293b;
+            background: #0a0e1a;
+            color: #94a3b8;
+        }
+
+        .links a:hover {
+            border-color: #4fc3f7;
+            color: #4fc3f7;
+            background: rgba(79, 195, 247, 0.06);
+        }
+
+        .links a.primary {
+            background: rgba(79, 195, 247, 0.1);
+            border-color: rgba(79, 195, 247, 0.25);
+            color: #4fc3f7;
+        }
+
+        .links a.primary:hover {
+            background: rgba(79, 195, 247, 0.18);
+        }
+
+        .footer {
+            text-align: center;
+            color: #334155;
+            font-size: 0.75rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📊 Presentations</h1>
+        <p class="subtitle">HTML-based presentations and deliverables — Martin Juhler</p>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-icon">⚙️</span>
+                <span class="project-title">Infor CPQ Assessment</span>
+            </div>
+            <p class="project-desc">Case for discontinuation of Infor CPQ — problems, alternatives, and recommendation
+                to consolidate on NetCalc.</p>
+            <div class="links">
+                <a class="primary" href="cpq-assessment/onepager.html">📄 One-Pager</a>
+                <a class="primary" href="cpq-assessment/presentation-short.html">📊 3-Slide Summary</a>
+                <a href="cpq-assessment/presentation.html">📑 Full Presentation</a>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-icon">🇮🇹</span>
+                <span class="project-title">Venice Family Trip</span>
+            </div>
+            <p class="project-desc">Complete family travel itinerary for Venice — Feb 21–28, 2026. Flights, transfers,
+                day-by-day plans, restaurants.</p>
+            <div class="links">
+                <a class="primary" href="venice-trip/index.html">🗺️ Trip Guide</a>
+            </div>
+        </div>
+
+        <p class="footer">Hosted via GitHub Pages</p>
+    </div>
+</body>
+
+</html>
