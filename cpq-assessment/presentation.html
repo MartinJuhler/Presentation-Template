@@ -11,15 +11,48 @@
     <link rel="stylesheet" href="../shared/styles.css">
     <link rel="stylesheet" href="../shared/edit-mode.css">
     <style>
-        /* Page-specific: slide entrance animation + timeline tweaks */
-        .slide { opacity: 0; transform: translateY(30px); animation: slideIn 0.6s ease forwards; }
-        @keyframes slideIn { to { opacity: 1; transform: translateY(0); } }
-        .timeline { margin-top: 2rem; }
-        .tl-item { position: relative; margin-bottom: 1.75rem; padding-left: 1.5rem; }
-        .tl-item::before { content: ''; position: absolute; left: -2rem; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-red); border: 3px solid var(--bg-dark); }
-        .tl-date { font-size: 0.75rem; font-weight: 600; color: var(--accent-amber); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.25rem; }
-        .tl-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
-        .tl-text { font-size: 0.85rem; color: var(--text-secondary); }
+        /* Page-specific: timeline tweaks */
+        .timeline {
+            margin-top: 2rem;
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: 1.75rem;
+            padding-left: 1.5rem;
+        }
+
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-red);
+            border: 3px solid var(--bg-dark);
+        }
+
+        .tl-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-amber);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .tl-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .tl-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 
@@ -36,12 +69,13 @@
     <!-- ═══════════════════════════════════════════════════ -->
     <section class="slide" id="slide-1">
         <div class="hero-glow" style="background: var(--accent-red); top: 10%; right: -10%;"></div>
-        <div class="slide-label">Internal Assessment · March 2026</div>
-        <h1 class="slide-title" style="max-width: 800px;">Why Infor CPQ Is Not<br>the Way Forward</h1>
-        <p class="slide-subtitle">An evidence-based assessment of the Infor CPQ project - its failures, limitations, and
+        <div class="slide-label reveal">Internal Assessment · March 2026</div>
+        <h1 class="slide-title reveal" style="max-width: 800px;">Why Infor CPQ Is Not<br>the Way Forward</h1>
+        <p class="slide-subtitle reveal">An evidence-based assessment of the Infor CPQ project - its failures,
+            limitations, and
             why continued investment will not deliver what AKVA needs.</p>
 
-        <div class="stats" style="margin-top: 2.5rem;">
+        <div class="stats reveal" style="margin-top: 2.5rem;">
             <div class="stat">
                 <div class="stat-value amber">18+</div>
                 <div class="stat-label">Months spent on Infor CPQ</div>
@@ -75,13 +109,14 @@
     <!-- SLIDE 2: The Liselotte Era                        -->
     <!-- ═══════════════════════════════════════════════════ -->
     <section class="slide" id="slide-2">
-        <div class="slide-label">The Consultant Era</div>
-        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">18 Months of Effort.<br>Nothing
+        <div class="slide-label reveal">The Consultant Era</div>
+        <h2 class="slide-title reveal" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">18 Months of Effort.<br>Nothing
             Delivered.</h2>
-        <p class="slide-subtitle">The Infor CPQ project was run by an external consultant (Liselotte) for over a year.
+        <p class="slide-subtitle reveal">The Infor CPQ project was run by an external consultant (Liselotte) for over a
+            year.
             Here is what happened - and where it was left.</p>
 
-        <div class="timeline">
+        <div class="timeline reveal">
             <div class="tl-item">
                 <div class="tl-date">Project Start</div>
                 <div class="tl-title">Initial Workshop - No Documentation</div>
@@ -133,13 +168,15 @@
     <!-- SLIDE 3: Trying to Make It Work (Martin's effort) -->
     <!-- ═══════════════════════════════════════════════════ -->
     <section class="slide" id="slide-3">
-        <div class="slide-label">Documented Timeline · Oct–Dec 2025</div>
-        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">We Tried to Make It Work.<br>We Had to
+        <div class="slide-label reveal">Documented Timeline · Oct–Dec 2025</div>
+        <h2 class="slide-title reveal" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">We Tried to Make It Work.<br>We
+            Had to
             Stop.</h2>
-        <p class="slide-subtitle">When I took over the CPQ project, the first priority was getting the existing setup to
+        <p class="slide-subtitle reveal">When I took over the CPQ project, the first priority was getting the existing
+            setup to
             function. After investigating, we realized it would keep breaking - and we had no way to fix it.</p>
 
-        <div class="grid-2">
+        <div class="grid-2 reveal">
             <div>
                 <h3
                     style="font-size: 0.85rem; font-weight: 600; color: var(--accent-amber); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;">
@@ -217,14 +254,16 @@
     <!-- SLIDE 4: CPQ 2.0 Challenge + Infor's Incompetence -->
     <!-- ═══════════════════════════════════════════════════ -->
     <section class="slide" id="slide-4">
-        <div class="slide-label">Challenging Infor</div>
-        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">We Asked Infor to Propose<br>Something
+        <div class="slide-label reveal">Challenging Infor</div>
+        <h2 class="slide-title reveal" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">We Asked Infor to
+            Propose<br>Something
             That Works. They Couldn't Commit.</h2>
-        <p class="slide-subtitle">After confirming the current setup was broken, we challenged Infor to propose a new
+        <p class="slide-subtitle reveal">After confirming the current setup was broken, we challenged Infor to propose a
+            new
             approach that could actually solve AKVA's use case. Here is
             what happened.</p>
 
-        <div class="grid-2">
+        <div class="grid-2 reveal">
             <div class="card card-warn">
                 <div class="card-icon">🐌</div>
                 <div class="card-title">2 Months Just to Get in the Room</div>
@@ -269,13 +308,15 @@
     <!-- SLIDE 5: Legacy Can Never Scale                    -->
     <!-- ═══════════════════════════════════════════════════ -->
     <section class="slide" id="slide-5">
-        <div class="slide-label">The Fundamental Problem</div>
-        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">A Legacy Tool That Can't<br>Adapt to
+        <div class="slide-label reveal">The Fundamental Problem</div>
+        <h2 class="slide-title reveal" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">A Legacy Tool That Can't<br>Adapt
+            to
             AKVA's Reality</h2>
-        <p class="slide-subtitle">Even if we invested heavily, Infor CPQ's rigid architecture makes it structurally
+        <p class="slide-subtitle reveal">Even if we invested heavily, Infor CPQ's rigid architecture makes it
+            structurally
             incapable of handling AKVA's product complexity - now or in the future.</p>
 
-        <div class="grid-2">
+        <div class="grid-2 reveal">
             <div class="card card-danger">
                 <div class="card-title">⚙️ Can't Handle Our Complexity</div>
                 <div class="card-text">AKVA's products - floating feeding modules (flåte), water transport, nets -
@@ -318,12 +359,13 @@
     <!-- SLIDE 6: The Better Alternative                    -->
     <!-- ═══════════════════════════════════════════════════ -->
     <section class="slide" id="slide-6">
-        <div class="slide-label">Comparison</div>
-        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">There Is a Better Alternative</h2>
-        <p class="slide-subtitle">NetCalc - AKVA's own in-house solution - is already handling complex configurations.
+        <div class="slide-label reveal">Comparison</div>
+        <h2 class="slide-title reveal" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">There Is a Better Alternative</h2>
+        <p class="slide-subtitle reveal">NetCalc - AKVA's own in-house solution - is already handling complex
+            configurations.
             Here is how it compares.</p>
 
-        <table class="cmp-table">
+        <table class="cmp-table reveal">
             <thead>
                 <tr>
                     <th style="width: 28%;">Capability</th>
@@ -386,11 +428,11 @@
     <!-- ═══════════════════════════════════════════════════ -->
     <section class="slide" id="slide-7">
         <div class="hero-glow" style="background: var(--accent-green); bottom: -10%; left: -10%;"></div>
-        <div class="slide-label">Recommendation</div>
-        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">Stop Investing in Infor
+        <div class="slide-label reveal">Recommendation</div>
+        <h2 class="slide-title reveal" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">Stop Investing in Infor
             CPQ.<br>Consolidate on NetCalc.</h2>
 
-        <div class="grid-2">
+        <div class="grid-2 reveal">
             <div class="card card-danger">
                 <div class="card-title">❌ Continuing with Infor CPQ Means</div>
                 <ul class="bullet-list red">
@@ -417,7 +459,7 @@
             </div>
         </div>
 
-        <div class="card card-info" style="margin-top: 2rem;">
+        <div class="card card-info reveal" style="margin-top: 2rem;">
             <div class="card-title">📋 Proposed Next Steps</div>
             <div class="card-text">
                 <ol
