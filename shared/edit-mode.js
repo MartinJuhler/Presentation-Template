@@ -131,21 +131,26 @@
         saveBtn.textContent = '⏳ Saving...';
 
         try {
-            // First, remove edit-mode artifacts from the HTML before saving
-            const editableElements = document.querySelectorAll('[contenteditable]');
-            editableElements.forEach(el => el.removeAttribute('contenteditable'));
-            document.body.classList.remove('edit-active');
+            // Clone the entire document to avoid mutating the live DOM
+            const clone = document.documentElement.cloneNode(true);
 
-            // Get the clean HTML content
-            const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            // Remove edit-mode injected elements from the clone
+            clone.querySelectorAll('.edit-toolbar, .edit-toast').forEach(el => el.remove());
 
-            // Restore edit mode
-            document.body.classList.add('edit-active');
-            const reEditableElements = document.querySelectorAll(EDITABLE_SELECTORS);
-            reEditableElements.forEach(el => {
-                if (el.closest('.edit-toolbar') || el.closest('.edit-toast')) return;
-                el.setAttribute('contenteditable', 'true');
-            });
+            // Remove contenteditable attributes
+            clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+            // Remove edit-active class from body
+            const cloneBody = clone.querySelector('body');
+            if (cloneBody) cloneBody.classList.remove('edit-active');
+
+            // Remove browser-injected attributes (e.g. data-jetski-tab-id, data-grammarly-*, etc.)
+            clone.getAttributeNames()
+                .filter(attr => attr.startsWith('data-'))
+                .forEach(attr => clone.removeAttribute(attr));
+
+            // Get the clean HTML content from the clone
+            const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
 
             // GitHub API: Get current file SHA
             const apiBase = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}`;
