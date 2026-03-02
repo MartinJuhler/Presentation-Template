@@ -22,6 +22,9 @@
     // Track active slide via IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            // Toggle visible class for reveal animations
+            entry.target.classList.toggle('visible', entry.isIntersecting);
+
             if (entry.isIntersecting) {
                 const idx = [...slides].indexOf(entry.target);
                 document.querySelectorAll('.nav-dot').forEach((d, i) =>
