@@ -21,6 +21,7 @@ Read the design system skill first:
 3. **Create `presentation.html`** (full deck, 5-10 slides)
    - Use the **dark theme** boilerplate from SKILL.md
    - Link to `../shared/styles.css`, `../shared/edit-mode.css`
+   - Include the `<nav>` with **empty** `#navDots` and `#navCounter` containers (nav.js populates them)
    - Include `../shared/nav.js` and `../shared/edit-mode.js` scripts
    - Add `<meta name="gh-path" content="<project>/presentation.html">`
 

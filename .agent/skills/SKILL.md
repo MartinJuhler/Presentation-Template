@@ -117,11 +117,22 @@ All dark-theme presentations link to `shared/styles.css` which provides the base
     <link rel="stylesheet" href="../shared/edit-mode.css">
 </head>
 <body>
+    <nav class="nav">
+        <div class="nav-brand">Brand · Title</div>
+        <div class="nav-slides" id="navDots"></div>
+        <div class="nav-counter" id="navCounter"></div>
+    </nav>
+
     <!-- slides -->
+
     <script src="../shared/nav.js"></script>
     <script src="../shared/edit-mode.js"></script>
 </body>
 ```
+
+> **⚠️ CRITICAL:** The `#navDots` and `#navCounter` containers must be **empty** in the HTML.
+> `nav.js` generates all nav dots and counter text dynamically. Hardcoding buttons
+> or text inside these elements causes **duplicate dots and wrong slide counters**.
 
 ### White Theme (One-Pagers)
 
