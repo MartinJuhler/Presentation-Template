@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -38,7 +38,7 @@
         <div class="hero-glow" style="background: var(--accent-red); top: 10%; right: -10%;"></div>
         <div class="slide-label">Internal Assessment · March 2026</div>
         <h1 class="slide-title" style="max-width: 800px;">Why Infor CPQ Is Not<br>the Way Forward</h1>
-        <p class="slide-subtitle">An evidence-based assessment of the Infor CPQ project — its failures, limitations, and
+        <p class="slide-subtitle">An evidence-based assessment of the Infor CPQ project - its failures, limitations, and
             why continued investment will not deliver what AKVA needs.</p>
 
         <div class="stats" style="margin-top: 2.5rem;">
@@ -60,7 +60,7 @@
             </div>
             <div class="stat">
                 <div class="stat-value red">???</div>
-                <div class="stat-label">Challenged Infor for a solution — no timeline or cost</div>
+                <div class="stat-label">Challenged Infor for a solution - no timeline or cost</div>
             </div>
         </div>
 
@@ -79,43 +79,43 @@
         <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">18 Months of Effort.<br>Nothing
             Delivered.</h2>
         <p class="slide-subtitle">The Infor CPQ project was run by an external consultant (Liselotte) for over a year.
-            Here is what happened — and where it was left.</p>
+            Here is what happened - and where it was left.</p>
 
         <div class="timeline">
             <div class="tl-item">
                 <div class="tl-date">Project Start</div>
-                <div class="tl-title">Initial Workshop — No Documentation</div>
+                <div class="tl-title">Initial Workshop - No Documentation</div>
                 <div class="tl-text">Single workshop with Infor. <strong>No documentation produced</strong>. Setup built
-                    on a myriad of interdependent matrices that reference each other — but <strong>updating one does not
+                    on a myriad of interdependent matrices that reference each other - but <strong>updating one does not
                         propagate to the others</strong>. The visual interface is so convoluted it's extremely hard to
-                    navigate or trace dependencies. Participants were <strong>highly confused</strong> by the setup —
+                    navigate or trace dependencies. Participants were <strong>highly confused</strong> by the setup -
                     it's not a user-friendly tool, and effectively requires coding knowledge to operate.</div>
             </div>
             <div class="tl-item">
                 <div class="tl-date">~4-6 Months In</div>
-                <div class="tl-title">Products Built — None Fully Tested</div>
+                <div class="tl-title">Products Built - None Fully Tested</div>
                 <div class="tl-text">Multiple product configurations were built (with Vincente from Infor), tracked in a
                     spreadsheet. However, <strong>none were ever fully tested, and many were noted as
-                        incorrect</strong>. Pricing was not even considered — only added later as a costly custom
+                        incorrect</strong>. Pricing was not even considered - only added later as a costly custom
                     integration. This shows that <strong>the use case was never properly thought through before
-                        building</strong> — we just went at it.</div>
+                        building</strong> - we just went at it.</div>
             </div>
             <div class="tl-item">
                 <div class="tl-date">Mid-Project</div>
-                <div class="tl-title">Consultant Reassigned — CPQ Abandoned</div>
+                <div class="tl-title">Consultant Reassigned - CPQ Abandoned</div>
                 <div class="tl-text">Liselotte switched to EPM and data migration (agreed with AKVA's project lead). CPQ
                     maintenance was <strong>not prioritized</strong>. She stated clearly: <strong>"CPQ was not mature
                         for use."</strong></div>
             </div>
             <div class="tl-item">
                 <div class="tl-date">Oct 2024</div>
-                <div class="tl-title">ERP Goes Live — CPQ Left Behind</div>
+                <div class="tl-title">ERP Goes Live - CPQ Left Behind</div>
                 <div class="tl-text">ERP went live on production. CPQ matrices were <strong>never synced with production
                         data</strong>. The data refresh between environments broke existing configurations.</div>
             </div>
             <div class="tl-item">
                 <div class="tl-date">Late 2025</div>
-                <div class="tl-title">Consultant on Parental Leave — No Knowledge Transfer</div>
+                <div class="tl-title">Consultant on Parental Leave - No Knowledge Transfer</div>
                 <div class="tl-text">Liselotte unavailable until Spring 2026. <strong>No other person has full system
                         knowledge.</strong> Only documentation is what exists on AKVA's Teams site. Her manager
                     confirmed: a new developer would need to start with a gap analysis.</div>
@@ -123,9 +123,9 @@
         </div>
 
         <div class="quote" style="margin-top: 1rem;">
-            "CPQ was not mature for use — AKVA Group was aware of this. The solution will require changes in
+            "CPQ was not mature for use - AKVA Group was aware of this. The solution will require changes in
             collaboration with Infor."
-            <div class="quote-src">— Liselotte's manager, formal status update</div>
+            <div class="quote-src">- Liselotte's manager, formal status update</div>
         </div>
     </section>
 
@@ -137,7 +137,7 @@
         <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">We Tried to Make It Work.<br>We Had to
             Stop.</h2>
         <p class="slide-subtitle">When I took over the CPQ project, the first priority was getting the existing setup to
-            function. After investigating, we realized it would keep breaking — and we had no way to fix it.</p>
+            function. After investigating, we realized it would keep breaking - and we had no way to fix it.</p>
 
         <div class="grid-2">
             <div>
@@ -180,7 +180,7 @@
                     <div class="card-title">No Automatic Data Sync</div>
                     <div class="card-text">Prices are fetched dynamically via FnOCOLL, but <strong>product data, item
                             lists, and options are 100% static</strong>. These must be manually updated for tens of
-                        thousands of components. Any change in the ERP — renamed items, new products, removed parts —
+                        thousands of components. Any change in the ERP - renamed items, new products, removed parts -
                         breaks CPQ silently.</div>
                 </div>
                 <div class="card card-danger" style="margin-bottom: 1rem;">
@@ -194,7 +194,7 @@
                     <div class="card-icon">💥</div>
                     <div class="card-title">No Internal Safety Logic</div>
                     <div class="card-text">No logic prevents cascading failures when data changes. If an item is
-                        updated, renamed, or removed in ERP, CPQ <strong>breaks silently</strong> — producing wrong
+                        updated, renamed, or removed in ERP, CPQ <strong>breaks silently</strong> - producing wrong
                         quotes or crashing entirely.</div>
                 </div>
             </div>
@@ -203,13 +203,13 @@
         <div class="quote" style="margin-top: 1.5rem;">
             "The amount of parts we have is just so big that it's not a manual task. Without solving the update of the
             matrices as a foundation, I don't see this solution is workable for AKVA."
-            <div class="quote-src">— CPQ Debugging Session, Nov 2025</div>
+            <div class="quote-src">- CPQ Debugging Session, Nov 2025</div>
         </div>
 
         <div class="quote">
             "Often, they didn't come prepared; they could only solve bits of the puzzle as they only know a little part
             of the product, so new meetings with multiple people had to be scheduled to come to a full understanding."
-            <div class="quote-src">— Internal project review</div>
+            <div class="quote-src">- Internal project review</div>
         </div>
     </section>
 
@@ -228,12 +228,12 @@
             <div class="card card-warn">
                 <div class="card-icon">🐌</div>
                 <div class="card-title">2 Months Just to Get in the Room</div>
-                <div class="card-text">It took <strong>2 months of building momentum</strong> — repeated escalations,
-                    meetings, follow-ups — before Infor allowed us to meet with people at a level who were "willing and
+                <div class="card-text">It took <strong>2 months of building momentum</strong> - repeated escalations,
+                    meetings, follow-ups - before Infor allowed us to meet with people at a level who were "willing and
                     somewhat able" to even discuss how a working solution might look.</div>
             </div>
             <div class="card card-warn">
-                <div class="card-icon">🗑️</div>
+                <div class="card-icon">�-�️</div>
                 <div class="card-title">Throw Everything Away</div>
                 <div class="card-text">Infor's answer: <strong>scrap the entire current setup</strong> and build 2-3 new
                     gigantic matrices from scratch. Some parts could potentially be automated, but the scope and cost
@@ -241,9 +241,9 @@
             </div>
             <div class="card card-danger">
                 <div class="card-icon">⏳</div>
-                <div class="card-title">⏳ 1 Month of Analysis — No Proven Track Record</div>
+                <div class="card-title">⏳ 1 Month of Analysis - No Proven Track Record</div>
                 <div class="card-text">After one month of looking into it, Infor said the approach <strong>could
-                        potentially work for standard items</strong> — but they have <strong>no in-production solutions
+                        potentially work for standard items</strong> - but they have <strong>no in-production solutions
                         like this to reference</strong>. Zero testing was done. When pressed for a delivery timeline and
                     cost estimate: <strong>they couldn't provide either.</strong></div>
             </div>
@@ -261,7 +261,7 @@
 
         <div class="quote">
             "No integration price or timeframe from Infor to make it work."
-            <div class="quote-src">— CPQ v2 assessment</div>
+            <div class="quote-src">- CPQ v2 assessment</div>
         </div>
     </section>
 
@@ -273,12 +273,12 @@
         <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">A Legacy Tool That Can't<br>Adapt to
             AKVA's Reality</h2>
         <p class="slide-subtitle">Even if we invested heavily, Infor CPQ's rigid architecture makes it structurally
-            incapable of handling AKVA's product complexity — now or in the future.</p>
+            incapable of handling AKVA's product complexity - now or in the future.</p>
 
         <div class="grid-2">
             <div class="card card-danger">
                 <div class="card-title">⚙️ Can't Handle Our Complexity</div>
-                <div class="card-text">AKVA's products — floating feeding modules (flåte), water transport, nets —
+                <div class="card-text">AKVA's products - floating feeding modules (flåte), water transport, nets -
                     require <strong>complex, tailored calculations</strong> for correct quotations. Infor CPQ relies on
                     rigid rules designed for standard manufacturing products. It <strong>cannot perform the
                         computations</strong> needed without extreme cost and workarounds. Products like <strong>flåte
@@ -289,20 +289,20 @@
                 <div class="card-text">Infor CPQ currently sends the entire BOM under <strong>one header</strong>, which
                     our ERP can't use for multi-site production. A side project was started to address this, but it was
                     <strong>put on hold before we received a cost or time estimate</strong>. It would require additional
-                    investment on top of everything else — for a feature that should be fundamental.
+                    investment on top of everything else - for a feature that should be fundamental.
                 </div>
             </div>
             <div class="card card-danger">
                 <div class="card-title">👥 One Developer at a Time</div>
                 <div class="card-text">Only <strong>one person can work in the project at a time</strong>. No branching,
-                    no merging — just push from server to server. Changes traced through manual comments only. No
+                    no merging - just push from server to server. Changes traced through manual comments only. No
                     automated testing before going live. <strong>This doesn't scale.</strong></div>
             </div>
             <div class="card card-danger">
                 <div class="card-title">🔮 Only Solves Standard Products</div>
                 <div class="card-text">Infor's proposed new approach uses 2-3 large matrices. Items could be synced from
-                    the ERP into one — but <strong>the options matrix would still need manual maintenance</strong>.
-                    Critically, this approach <strong>would only work for standard products — complex products like
+                    the ERP into one - but <strong>the options matrix would still need manual maintenance</strong>.
+                    Critically, this approach <strong>would only work for standard products - complex products like
                         flåte are simply not solvable</strong> within this architecture.</div>
             </div>
         </div>
@@ -310,7 +310,7 @@
         <div class="quote" style="margin-top: 1.5rem;">
             "Choosing Infor CPQ would almost certainly generate strong pushback from other branches, impacting the
             likelihood of running a successful project."
-            <div class="quote-src">— NetCalc vs Infor feasibility analysis</div>
+            <div class="quote-src">- NetCalc vs Infor feasibility analysis</div>
         </div>
     </section>
 
@@ -320,7 +320,7 @@
     <section class="slide" id="slide-6">
         <div class="slide-label">Comparison</div>
         <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">There Is a Better Alternative</h2>
-        <p class="slide-subtitle">NetCalc — AKVA's own in-house solution — is already handling complex configurations.
+        <p class="slide-subtitle">NetCalc - AKVA's own in-house solution - is already handling complex configurations.
             Here is how it compares.</p>
 
         <table class="cmp-table">
@@ -377,7 +377,7 @@
 
         <div class="quote" style="margin-top: 1.5rem; border-left-color: var(--accent-green);">
             "NetCalc integration: manageable in-house effort with full control over timeline and scope."
-            <div class="quote-src">— Ole Kristian Westby, Integration Estimate, Dec 2025</div>
+            <div class="quote-src">- Ole Kristian Westby, Integration Estimate, Dec 2025</div>
         </div>
     </section>
 
@@ -394,8 +394,8 @@
             <div class="card card-danger">
                 <div class="card-title">❌ Continuing with Infor CPQ Means</div>
                 <ul class="bullet-list red">
-                    <li>Scrapping everything and rebuilding from scratch — again</li>
-                    <li>Unknown costs — Infor won't even provide estimates</li>
+                    <li>Scrapping everything and rebuilding from scratch - again</li>
+                    <li>Unknown costs - Infor won't even provide estimates</li>
                     <li>Permanent dependency on expensive external consultants</li>
                     <li>Architecture that can't handle flåte, nets, or other complex products</li>
                     <li>No automated testing, no version control, no scalability</li>
@@ -409,7 +409,7 @@
                     <li>Proven solution already handling complex configurations</li>
                     <li>Production-ready ERP integration in ~12.5 days</li>
                     <li>ERP integration: manageable in-house effort</li>
-                    <li>In-house control — no external consultant dependency</li>
+                    <li>In-house control - no external consultant dependency</li>
                     <li>Modern tech stack with transparent, maintainable logic</li>
                     <li>Rapid adaptation to product changes and new product families</li>
                     <li>Best positioned for all-branch adoption and scalability</li>
