@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infor CPQ – One-Pager: Case for Discontinuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            line-height: 1.5;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            max-height: 297mm;
+            overflow: hidden;
+            margin: 0 auto;
+            padding: 22mm 24mm 24mm 24mm;
+            position: relative;
+        }
+
+        /* Header bar */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 3px solid #ef4444;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0a0e1a;
+            line-height: 1.2;
+        }
+
+        .header-sub {
+            font-size: 11px;
+            color: #64748b;
+            text-align: right;
+        }
+
+        .header-sub strong {
+            color: #0a0e1a;
+        }
+
+        /* Stats row */
+        .stats {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .stat {
+            flex: 1;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ef4444;
+            line-height: 1;
+        }
+
+        .stat-val.amber {
+            color: #f59e0b;
+        }
+
+        .stat-lbl {
+            font-size: 9px;
+            color: #64748b;
+            margin-top: 3px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sections */
+        h2 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #ef4444;
+            margin-bottom: 6px;
+            margin-top: 14px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Two-col layout */
+        .cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .col-full {
+            grid-column: 1 / -1;
+        }
+
+        /* Cards */
+        .card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 6px 10px;
+        }
+
+        .card-red {
+            border-left: 3px solid #ef4444;
+        }
+
+        .card-amber {
+            border-left: 3px solid #f59e0b;
+        }
+
+        .card-green {
+            border-left: 3px solid #10b981;
+        }
+
+        .card-amber {
+            border-left: 3px solid #f59e0b;
+        }
+
+        .card h3 {
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .card p,
+        .card li {
+            font-size: 9.5px;
+            color: #475569;
+            line-height: 1.45;
+        }
+
+        .card ul {
+            padding-left: 14px;
+            margin-top: 3px;
+        }
+
+        .card li {
+            margin-bottom: 2px;
+        }
+
+        /* Quote */
+        .quote {
+            background: #fffbeb;
+            border-left: 3px solid #f59e0b;
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+            margin: 8px 0;
+            font-style: italic;
+            font-size: 9.5px;
+            color: #475569;
+        }
+
+        .quote-src {
+            font-style: normal;
+            font-size: 8px;
+            color: #94a3b8;
+            margin-top: 3px;
+        }
+
+        /* Table */
+        .cmp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+            margin-top: 6px;
+        }
+
+        .cmp-table th {
+            text-align: left;
+            padding: 5px 8px;
+            background: #f1f5f9;
+            font-weight: 700;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .cmp-table td {
+            padding: 4px 8px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #475569;
+            vertical-align: top;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+        .badge-red {
+            background: #fef2f2;
+            color: #ef4444;
+        }
+
+        .badge-green {
+            background: #ecfdf5;
+            color: #10b981;
+        }
+
+        .badge-amber {
+            background: #fffbeb;
+            color: #f59e0b;
+        }
+
+        /* Recommendation */
+        .rec {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .rec-card {
+            padding: 10px 12px;
+            border-radius: 8px;
+        }
+
+        .rec-bad {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .rec-good {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+        }
+
+        .rec-card h3 {
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .rec-card li {
+            font-size: 9px;
+            color: #475569;
+            margin-bottom: 2px;
+        }
+
+        .rec-card ul {
+            padding-left: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 16mm;
+            left: 24mm;
+            right: 24mm;
+            font-size: 8px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <div class="header">
+            <div>
+                <div class="header-title">Why Infor CPQ Should Be Discontinued</div>
+                <div style="font-size: 10px; color: #64748b; margin-top: 2px;">Case for the LN Leader Board — AKVA Group
+                </div>
+            </div>
+            <div class="header-sub">
+                <strong>Prepared by</strong><br>
+                Martin Juhler<br>
+                Customer Experience Lead<br>
+                March 2026
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-val amber">18+</div>
+                <div class="stat-lbl">Months on Infor CPQ</div>
+            </div>
+            <div class="stat">
+                <div class="stat-val">0</div>
+                <div class="stat-lbl">Products in production</div>
+            </div>
+            <div class="stat">
+                <div class="stat-val">4</div>
+                <div class="stat-lbl">Critical errors unresolved</div>
+            </div>
+            <div class="stat">
+                <div class="stat-val">2 mo</div>
+                <div class="stat-lbl">To diagnose failures</div>
+            </div>
+            <div class="stat">
+                <div class="stat-val">???</div>
+                <div class="stat-lbl">No cost/timeline from Infor</div>
+            </div>
+        </div>
+
+        <!-- What I Did -->
+        <h2>What Was Done</h2>
+        <div class="card card-amber" style="margin-bottom: 8px;">
+            <p>After taking over the CPQ project, I first attempted to get the existing setup working. When that proved
+                structurally unfixable (static data, no propagation, silent breakage), I <strong>challenged Infor to
+                    propose a new approach</strong> that could actually solve AKVA's use case. After 2 months of
+                building
+                momentum to even get the right people in the room, they proposed scrapping everything and starting over
+                with 2-3 new matrices, and developing bespoke integrations to make it work. Even after a month of
+                analysis to come up with a usable solution, the proposed approach would only cover standard items. Infor
+                had <strong>no in-production
+                    references</strong> to point to, had done <strong>zero testing</strong> of a working solution, and
+                — even knowing everything was at stake — <strong>could not commit to a timeline or cost
+                    estimate</strong>.
+            </p>
+        </div>
+
+        <h2>Why It Cannot Work for AKVA</h2>
+        <div
+            style="font-size: 8px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #ef4444; margin-bottom: 4px;">
+            Existing Setup</div>
+        <div class="cols" style="grid-template-columns: 1fr 1fr; gap: 6px;">
+            <div class="card card-red">
+                <h3>🔄 No Automatic Data Sync</h3>
+                <p>Product data and options are 100% static. Any ERP change breaks CPQ silently. Tens of thousands of
+                    components require constant manual upkeep.</p>
+            </div>
+            <div class="card card-red">
+                <h3>📂 Convoluted Interface</h3>
+                <p>Myriad of interdependent matrices that reference each other — but updating one does not propagate. UI
+                    so convoluted that participants were highly confused. Requires coding knowledge to operate.</p>
+            </div>
+            <div class="card card-red">
+                <h3>👥 One Developer at a Time</h3>
+                <p>No branching, merging, or automated testing. Changes traced via manual comments only. Only one person
+                    can work on it at a time. Doesn't scale.</p>
+            </div>
+            <div class="card card-red">
+                <h3>💥 No Safety Logic</h3>
+                <p>No protection against cascading failures. Renamed or removed items in ERP produce wrong quotes or
+                    crashes — with zero warning to the user.</p>
+            </div>
+        </div>
+        <div
+            style="font-size: 8px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #f59e0b; margin-top: 6px; margin-bottom: 4px;">
+            Proposed New Approach — Still Broken</div>
+        <div class="cols" style="grid-template-columns: 1fr 1fr; gap: 8px;">
+            <div class="card card-amber">
+                <h3>🤷 Infor Can't Commit</h3>
+                <p>Support is siloed — no single person understands the full flow. Their best proposal has no
+                    in-production references, no timeline, and no cost estimate.</p>
+            </div>
+            <div class="card card-amber">
+                <h3>🔮 Only Standard Products</h3>
+                <p>Even the proposed new approach only covers standard items. Complex product families like
+                    <strong>flåte are not solvable</strong> in this architecture. Expansion would require costly manual
+                    effort with ongoing consultant dependency.
+                </p>
+            </div>
+        </div>
+
+        <!-- Comparison -->
+        <h2>Infor CPQ vs. NetCalc (In-House)</h2>
+        <table class="cmp-table">
+            <thead>
+                <tr>
+                    <th>Capability</th>
+                    <th>Infor CPQ</th>
+                    <th>NetCalc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Handle AKVA's complexity</td>
+                    <td><span class="badge badge-red">Cannot</span> Rigid rules</td>
+                    <td><span class="badge badge-green">Proven</span> Built for it</td>
+                </tr>
+                <tr>
+                    <td>Automatic data updates</td>
+                    <td><span class="badge badge-red">No</span> Premium add-ons</td>
+                    <td><span class="badge badge-green">~6 days</span> Azure Data Lake</td>
+                </tr>
+                <tr>
+                    <td>BOM splitting</td>
+                    <td><span class="badge badge-amber">Extra cost</span> On hold</td>
+                    <td><span class="badge badge-green">Supported</span> Multi-site</td>
+                </tr>
+                <tr>
+                    <td>Integration cost</td>
+                    <td><span class="badge badge-red">Unknown</span> No estimate</td>
+                    <td><span class="badge badge-green">Low</span> In-house effort</td>
+                </tr>
+                <tr>
+                    <td>Scalability (flåte, nets)</td>
+                    <td><span class="badge badge-red">Cannot</span> Too rigid</td>
+                    <td><span class="badge badge-green">Purpose-built</span> Extensible</td>
+                </tr>
+                <tr>
+                    <td>Maintenance</td>
+                    <td><span class="badge badge-red">External</span> Infor consultants</td>
+                    <td><span class="badge badge-green">In-house</span> Full control</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Recommendation -->
+        <h2>Recommendation</h2>
+        <div class="rec">
+            <div class="rec-card rec-bad">
+                <h3>❌ Continuing with Infor CPQ</h3>
+                <ul>
+                    <li>Scrap everything, rebuild from scratch — again</li>
+                    <li>Unknown costs — Infor won't estimate</li>
+                    <li>Permanent consultant dependency</li>
+                    <li>Can't handle flåte or complex products</li>
+                    <li>Strong branch pushback expected</li>
+                </ul>
+            </div>
+            <div class="rec-card rec-good">
+                <h3>✅ Consolidate on NetCalc</h3>
+                <ul>
+                    <li>Proven solution, already in use</li>
+                    <li>ERP integration: manageable in-house effort</li>
+                    <li>In-house control, no external dependency</li>
+                    <li>Handles complex products (flåte, nets)</li>
+                    <li>Best positioned for all-branch adoption</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

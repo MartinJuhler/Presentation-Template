@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infor CPQ – Executive Summary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e1a;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2235;
+            --accent-red: #ef4444;
+            --accent-red-glow: rgba(239, 68, 68, 0.15);
+            --accent-amber: #f59e0b;
+            --accent-amber-glow: rgba(245, 158, 11, 0.15);
+            --accent-green: #10b981;
+            --accent-green-glow: rgba(16, 185, 129, 0.15);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 14, 26, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-slides {
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav-dot {
+            width: 28px;
+            height: 4px;
+            border-radius: 2px;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            outline: none;
+        }
+
+        .nav-dot.active {
+            background: var(--accent-red);
+            width: 40px;
+        }
+
+        .nav-counter {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 6vw 60px;
+            position: relative;
+        }
+
+        .slide-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+        }
+
+        .slide-title {
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 750px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            min-width: 130px;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stat-value.red {
+            color: var(--accent-red);
+        }
+
+        .stat-value.amber {
+            color: var(--accent-amber);
+        }
+
+        .stat-value.green {
+            color: var(--accent-green);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+            font-weight: 500;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .card-danger {
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .card-warn {
+            border-left: 3px solid var(--accent-amber);
+        }
+
+        .card-ok {
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .card-info {
+            border-left: 3px solid #3b82f6;
+        }
+
+        .quote {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent-amber);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .quote-src {
+            font-style: normal;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-top: 0.75rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.65rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .bullet-list.red li::before {
+            background: var(--accent-red);
+        }
+
+        .bullet-list.green li::before {
+            background: var(--accent-green);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        @media print {
+            .nav {
+                display: none;
+            }
+
+            .slide {
+                min-height: auto;
+                page-break-after: always;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav-brand">AKVA Group · CPQ Executive Summary</div>
+        <div class="nav-slides" id="navDots"></div>
+        <div class="nav-counter" id="navCounter">1 / 3</div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SLIDE 1: What I Did + Key Stats               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="slide" id="slide-1">
+        <div class="hero-glow" style="background: var(--accent-red); top: 10%; right: -10%;"></div>
+        <div class="slide-label">Internal Assessment · March 2026</div>
+        <h1 class="slide-title" style="max-width: 800px;">Infor CPQ: Why We Need<br>to Shut It Down</h1>
+        <p class="slide-subtitle">After 18+ months with no usable result, I took over the CPQ project. I first tried to
+            make the existing setup work — it can't. I then challenged Infor to propose a new approach. They couldn't
+            commit.</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value amber">18+</div>
+                <div class="stat-label">Months on Infor CPQ</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value red">0</div>
+                <div class="stat-label">Products in production</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value red">2 mo</div>
+                <div class="stat-label">Just to diagnose why it fails</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value red">???</div>
+                <div class="stat-label">No cost or timeline from Infor</div>
+            </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 2rem;">
+            <div class="card card-warn">
+                <div class="card-title">What was done before me</div>
+                <div class="card-text">External consultant (Liselotte) built multiple product configurations over 4-6
+                    months — <strong>none fully tested, many noted as incorrect</strong>. The scope was a signed-off
+                    single use case POC with static information — but the broader requirements were never properly
+                    presented to or agreed upon with Infor. She was later reassigned and noted the solution was
+                    "not mature for use." She is now on parental leave, with some static handover documentation
+                    and a written statement through her consultant firm — leaving many questions unanswered.</div>
+            </div>
+            <div class="card card-warn">
+                <div class="card-title">What I did</div>
+                <div class="card-text">Investigated existing setup → found it would <strong>keep breaking with no way to
+                        fix it</strong>. Challenged Infor to propose a new approach that could actually solve AKVA's use
+                    case. After 2 months building momentum, they proposed scrapping everything and developing bespoke
+                    integrations. Even after a month of analysis to come up with a usable solution, the approach would
+                    only cover standard items. Infor had
+                    <strong>no in-production references, zero testing, and — even knowing everything was at stake —
+                        could not commit to a timeline or cost estimate</strong>.
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top: 1.5rem; font-size: 0.78rem; color: var(--text-muted);">Prepared by Martin Juhler ·
+            Customer Experience Lead</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SLIDE 2: Core Problems                         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="slide" id="slide-2">
+        <div class="slide-label">Why It Cannot Work</div>
+        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">The Core Problems</h2>
+        <p class="slide-subtitle">Even with additional investment, Infor CPQ is structurally incapable of meeting AKVA's
+            needs.</p>
+
+        <div
+            style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-red);">
+            Existing Setup — Status Quo</div>
+        <div class="grid-3" style="grid-template-columns: repeat(4, 1fr);">
+            <div class="card card-danger">
+                <div class="card-icon">🔄</div>
+                <div class="card-title">No Automatic Data Sync</div>
+                <div class="card-text">Prices come via FnOCOLL, but product data, items, and options are <strong>100%
+                        static</strong>. Any ERP change breaks CPQ silently. Manual upkeep for tens of thousands of
+                    components.</div>
+            </div>
+            <div class="card card-danger">
+                <div class="card-icon">📂</div>
+                <div class="card-title">Convoluted Interface</div>
+                <div class="card-text">Myriad of interdependent matrices. Updates don't propagate. UI so convoluted that
+                    participants were <strong>highly confused</strong>. Requires coding knowledge to operate.</div>
+            </div>
+            <div class="card card-danger">
+                <div class="card-icon">👥</div>
+                <div class="card-title">One Developer at a Time</div>
+                <div class="card-text">No branching, no merging, no automated testing. Changes traced via manual
+                    comments only. <strong>Doesn't scale.</strong></div>
+            </div>
+            <div class="card card-danger">
+                <div class="card-icon">💥</div>
+                <div class="card-title">No Safety Logic</div>
+                <div class="card-text">No protection against cascading failures. Renamed or removed items produce
+                    <strong>wrong quotes or crashes</strong> — with zero warning.
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-amber);">
+            Proposed New Approach — Still Broken</div>
+        <div class="grid-2">
+            <div class="card card-warn">
+                <div class="card-icon">🤷</div>
+                <div class="card-title">Infor Can't Commit</div>
+                <div class="card-text">Support is siloed. No single person understands the full flow. Their best
+                    proposal has <strong>no production references, no timeline, no cost</strong>.</div>
+            </div>
+            <div class="card card-warn">
+                <div class="card-icon">🔮</div>
+                <div class="card-title">Only Standard Products</div>
+                <div class="card-text">Even their proposed new approach only covers standard items. <strong>Complex
+                        products like flåte are not solvable</strong> in this architecture.</div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SLIDE 3: Recommendation                        -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="slide" id="slide-3">
+        <div class="hero-glow" style="background: var(--accent-green); bottom: -10%; left: -10%;"></div>
+        <div class="slide-label">Recommendation</div>
+        <h2 class="slide-title" style="font-size: clamp(1.6rem, 3vw, 2.5rem);">Stop Investing in Infor
+            CPQ.<br>Consolidate on NetCalc.</h2>
+
+        <div class="grid-2">
+            <div class="card card-danger">
+                <div class="card-title">❌ Continuing with Infor CPQ</div>
+                <ul class="bullet-list red">
+                    <li>Scrap everything and rebuild — again</li>
+                    <li>Unknown costs — Infor won't even estimate</li>
+                    <li>Permanent consultant dependency</li>
+                    <li>Can't handle flåte or complex products</li>
+                    <li>No automated testing or version control</li>
+                    <li>Strong branch pushback expected</li>
+                </ul>
+            </div>
+            <div class="card card-ok">
+                <div class="card-title">✅ Consolidate on NetCalc</div>
+                <ul class="bullet-list green">
+                    <li>Proven solution, already handling complex configs</li>
+                    <li>ERP integration: manageable in-house effort</li>
+                    <li>In-house control, no external dependency</li>
+                    <li>Handles flåte, nets, and all product families</li>
+                    <li>Modern, maintainable, scalable tech stack</li>
+                    <li>Best positioned for all-branch adoption</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card card-info" style="margin-top: 2rem;">
+            <div class="card-title">📋 Proposed Next Steps</div>
+            <div class="card-text">
+                <ol
+                    style="margin-top: 0.5rem; padding-left: 1.2rem; color: var(--text-secondary); font-size: 0.875rem; line-height: 2;">
+                    <li><strong>Decision</strong>: Formally discontinue Infor CPQ</li>
+                    <li><strong>NetCalc POC</strong>: Connect to Azure Data Lake (~9.5 days)</li>
+                    <li><strong>Pilot</strong>: Nautilus as acceptance test</li>
+                    <li><strong>Expand</strong>: Scale to additional product families</li>
+                    <li><strong>Integrate</strong>: BOM handover to ERP for production</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const navDots = document.getElementById('navDots');
+        const navCounter = document.getElementById('navCounter');
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => slides[i].scrollIntoView({ behavior: 'smooth' });
+            navDots.appendChild(dot);
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = [...slides].indexOf(entry.target);
+                    document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+                    navCounter.textContent = `${idx + 1} / ${slides.length}`;
+                }
+            });
+        }, { threshold: 0.5 });
+        slides.forEach(s => observer.observe(s));
+        document.addEventListener('keydown', e => {
+            const dots = document.querySelectorAll('.nav-dot');
+            const current = [...dots].findIndex(d => d.classList.contains('active'));
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (current < slides.length - 1) slides[current + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (current > 0) slides[current - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+
+</html>

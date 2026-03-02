@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venice Family Trip — 21–28 Feb 2026</title>
+    <meta name="description"
+        content="Complete family travel itinerary for Venice, Italy. Feb 21-28 2026. Airport transfers, daily plans, restaurants, and tips for 2 adults + 2 kids." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ========== RESET & TOKENS ========== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0b0f1a;
+            --surface: #131828;
+            --surface2: #1a2035;
+            --border: rgba(255, 255, 255, .07);
+            --text: #e8eaf0;
+            --text-dim: #8b92a8;
+            --accent: #4fc3f7;
+            --accent2: #ab47bc;
+            --gold: #ffb74d;
+            --green: #66bb6a;
+            --rose: #ef5350;
+            --radius: 16px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, .45);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(79, 195, 247, .12) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(171, 71, 188, .10) 0%, transparent 60%),
+                var(--bg);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234fc3f7' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: drift 60s linear infinite;
+        }
+
+        @keyframes drift {
+            to {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(79, 195, 247, .1);
+            border: 1px solid rgba(79, 195, 247, .2);
+            border-radius: 999px;
+            padding: .35rem 1.1rem;
+            font-size: .8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            margin-top: 1rem;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .trip-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-chip {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: .55rem 1.1rem;
+            font-size: .85rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .meta-chip .icon {
+            font-size: 1.1rem;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            animation: bounce 2s infinite;
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        /* ========== NAV ========== */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 15, 26, .85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: .6rem 1rem;
+            display: flex;
+            gap: .5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .sticky-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sticky-nav a {
+            white-space: nowrap;
+            font-size: .78rem;
+            padding: .4rem .9rem;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            transition: all .2s;
+            text-decoration: none;
+        }
+
+        .sticky-nav a:hover,
+        .sticky-nav a.active {
+            background: rgba(79, 195, 247, .12);
+            color: var(--accent);
+            border-color: rgba(79, 195, 247, .3);
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: .4rem;
+        }
+
+        .section-sub {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-size: .95rem;
+        }
+
+        /* ========== CARDS ========== */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem;
+            margin-bottom: 1.25rem;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            margin-bottom: .8rem;
+        }
+
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .card-icon.blue {
+            background: rgba(79, 195, 247, .12);
+        }
+
+        .card-icon.purple {
+            background: rgba(171, 71, 188, .12);
+        }
+
+        .card-icon.gold {
+            background: rgba(255, 183, 77, .12);
+        }
+
+        .card-icon.green {
+            background: rgba(102, 187, 106, .12);
+        }
+
+        .card-icon.rose {
+            background: rgba(239, 83, 80, .12);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .card p,
+        .card li {
+            color: var(--text-dim);
+            font-size: .92rem;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+        }
+
+        .card li {
+            margin-bottom: .3rem;
+        }
+
+        .card strong {
+            color: var(--text);
+        }
+
+        /* ========== DAY TIMELINE ========== */
+        .day-block {
+            position: relative;
+            padding-left: 2.4rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .day-block::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent2));
+            border-radius: 2px;
+        }
+
+        .day-dot {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            display: grid;
+            place-items: center;
+        }
+
+        .day-dot::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .day-label {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: .2rem;
+        }
+
+        .day-date {
+            font-size: .82rem;
+            color: var(--text-dim);
+            margin-bottom: .8rem;
+        }
+
+        .time-item {
+            display: flex;
+            gap: .8rem;
+            margin-bottom: .65rem;
+            align-items: flex-start;
+        }
+
+        .time-badge {
+            flex-shrink: 0;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: .2rem .55rem;
+            font-size: .75rem;
+            color: var(--accent);
+            min-width: 52px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .time-text {
+            font-size: .9rem;
+            color: var(--text-dim);
+        }
+
+        .time-text strong {
+            color: var(--text);
+        }
+
+        /* ========== FLIGHT BANNER ========== */
+        .flight-banner {
+            background: linear-gradient(135deg, rgba(79, 195, 247, .08), rgba(171, 71, 188, .08));
+            border: 1px solid rgba(79, 195, 247, .15);
+            border-radius: var(--radius);
+            padding: 1.4rem 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .flight-leg {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .flight-emoji {
+            font-size: 1.8rem;
+        }
+
+        .flight-info .flight-route {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .flight-info .flight-time {
+            font-size: .82rem;
+            color: var(--text-dim);
+        }
+
+        .flight-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+        }
+
+        /* ========== TRANSPORT OPTION CARDS ========== */
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .transport-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.4rem;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .transport-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .transport-card .label {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--accent);
+            margin-bottom: .6rem;
+        }
+
+        .transport-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: .4rem;
+        }
+
+        .transport-card .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .transport-card .price small {
+            font-size: .7rem;
+            font-weight: 400;
+            color: var(--text-dim);
+        }
+
+        .transport-card ul {
+            padding-left: 1rem;
+            margin-top: .5rem;
+        }
+
+        .transport-card li {
+            font-size: .82rem;
+            color: var(--text-dim);
+            margin-bottom: .2rem;
+        }
+
+        .recommended {
+            border-color: rgba(79, 195, 247, .35) !important;
+            box-shadow: 0 0 24px rgba(79, 195, 247, .08);
+        }
+
+        .recommended::before {
+            content: '★ RECOMMENDED';
+            display: block;
+            font-size: .65rem;
+            letter-spacing: .12em;
+            color: var(--accent);
+            margin-bottom: .5rem;
+        }
+
+        /* ========== RESTAURANT TABLE ========== */
+        .resto-list {
+            display: grid;
+            gap: .8rem;
+        }
+
+        .resto-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            transition: transform .15s;
+        }
+
+        .resto-item:hover {
+            transform: translateX(4px);
+        }
+
+        .resto-num {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(79, 195, 247, .1);
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: .85rem;
+            flex-shrink: 0;
+        }
+
+        .resto-name {
+            font-weight: 600;
+            font-size: .95rem;
+        }
+
+        .resto-desc {
+            font-size: .8rem;
+            color: var(--text-dim);
+        }
+
+        /* ========== TIP BOXES ========== */
+        .tip-box {
+            background: rgba(255, 183, 77, .06);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 12px 12px 0;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            font-size: .9rem;
+            color: var(--text-dim);
+        }
+
+        .tip-box strong {
+            color: var(--gold);
+        }
+
+        /* ========== BOAT OFFER ========== */
+        .boat-offer {
+            background: linear-gradient(135deg, rgba(171, 71, 188, .08), rgba(79, 195, 247, .06));
+            border: 1px solid rgba(171, 71, 188, .2);
+            border-radius: var(--radius);
+            padding: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .boat-offer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: .5rem;
+        }
+
+        .offer-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .offer-option {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .offer-option.highlight {
+            border-color: rgba(102, 187, 106, .3);
+            background: rgba(102, 187, 106, .04);
+        }
+
+        .offer-option h4 {
+            font-size: .95rem;
+            margin-bottom: .3rem;
+        }
+
+        .offer-option .price-tag {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .offer-option .price-tag.dim {
+            color: var(--text-dim);
+        }
+
+        .offer-option p {
+            font-size: .82rem;
+            color: var(--text-dim);
+        }
+
+        .offer-option .strike {
+            text-decoration: line-through;
+            color: var(--text-dim);
+            font-size: .85rem;
+        }
+
+        /* ========== ACCOMMODATION ========== */
+        .accom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: .8rem;
+            margin-top: 1rem;
+        }
+
+        .accom-stat {
+            background: var(--surface2);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .accom-stat .icon {
+            font-size: 1.6rem;
+            margin-bottom: .3rem;
+        }
+
+        .accom-stat .value {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .accom-stat .label {
+            font-size: .75rem;
+            color: var(--text-dim);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-dim);
+            font-size: .8rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 640px) {
+            .flight-banner {
+                flex-direction: column;
+            }
+
+            .flight-divider {
+                width: 100%;
+                height: 1px;
+            }
+
+            .offer-compare {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero" id="top">
+        <div class="hero-badge">🇮🇹 Family Adventure</div>
+        <h1>A Week in <span>Venice</span></h1>
+        <p class="subtitle">21 – 28 February 2026 &middot; 2 Adults + 2 Kids (5 &amp; 7) &middot; Cà dell'Arte Suite,
+            Castello</p>
+        <div class="trip-meta">
+            <div class="meta-chip"><span class="icon">✈️</span> SVG → AMS → VCE</div>
+            <div class="meta-chip"><span class="icon">🛫</span> Sat 21 Feb, 17:20</div>
+            <div class="meta-chip"><span class="icon">🏠</span> 7 Nights</div>
+            <div class="meta-chip"><span class="icon">🛬</span> Sat 28 Feb, 16:35</div>
+            <div class="meta-chip"><span class="icon">🇳🇱</span> KLM via Amsterdam</div>
+        </div>
+        <div class="scroll-hint">↓</div>
+    </header>
+
+    <!-- ============ STICKY NAV ============ -->
+    <nav class="sticky-nav">
+        <a href="#flights">Flights</a>
+        <a href="#transfers">Airport → Hotel</a>
+        <a href="#accommodation">Stay</a>
+        <a href="#itinerary">Itinerary</a>
+        <a href="#boat-tour">Boat Tour</a>
+        <a href="#restaurants">Restaurants</a>
+        <a href="#tips">Tips</a>
+    </nav>
+
+    <!-- ============ FLIGHTS ============ -->
+    <section class="section" id="flights">
+        <h2 class="section-title">✈️ Flights</h2>
+        <p class="section-sub">KLM connecting flights via Amsterdam Schiphol (AMS)</p>
+
+        <h3 style="font-size:1rem;color:var(--accent);margin-bottom:.8rem;">🛫 Outbound — Saturday 21 February</h3>
+        <div class="flight-banner">
+            <div class="flight-leg">
+                <span class="flight-emoji">🛫</span>
+                <div class="flight-info">
+                    <div class="flight-route">KL 1182 · Stavanger → Amsterdam</div>
+                    <div class="flight-time">17:20 – 18:55 · Stavanger SVG</div>
+                </div>
+            </div>
+            <div class="flight-divider"></div>
+            <div class="flight-leg">
+                <span class="flight-emoji">✈️</span>
+                <div class="flight-info">
+                    <div class="flight-route">KL 1637 · Amsterdam → Venice</div>
+                    <div class="flight-time">20:35 – 22:15 · Amsterdam AMS</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-size:1rem;color:var(--accent);margin-bottom:.8rem;">🛬 Return — Saturday 28 February</h3>
+        <div class="flight-banner">
+            <div class="flight-leg">
+                <span class="flight-emoji">🛫</span>
+                <div class="flight-info">
+                    <div class="flight-route">KL 1630 · Venice → Amsterdam</div>
+                    <div class="flight-time">12:20 – 14:20 · Venice VCE</div>
+                </div>
+            </div>
+            <div class="flight-divider"></div>
+            <div class="flight-leg">
+                <span class="flight-emoji">🛬</span>
+                <div class="flight-info">
+                    <div class="flight-route">KL 1181 · Amsterdam → Stavanger</div>
+                    <div class="flight-time">15:05 – 16:35 · Amsterdam AMS</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 Connection info:</strong> You have a <strong>1h 40min layover</strong> at Schiphol on the way out
+            (18:55→20:35) and <strong>45 min</strong> on the way back (14:20→15:05). The return connection is tight —
+            KLM will transfer luggage automatically, but move quickly through the terminal. Schiphol is well set-up for
+            families with kids' play areas at several gates.
+        </div>
+
+        <div class="tip-box">
+            <strong>🌙 Arrival note:</strong> You land at <strong>22:15</strong> in Venice. By ~22:45 you'll have
+            luggage. The Alilaguna runs until ~00:40, so you can catch it — but with tired kids late at night, a
+            <strong>water taxi or shared shuttle</strong> is the stress-free choice. See transfer options below.
+        </div>
+    </section>
+
+    <!-- ============ TRANSFERS ============ -->
+    <section class="section" id="transfers">
+        <h2 class="section-title">🚤 Airport ↔ Accommodation</h2>
+        <p class="section-sub">Getting to <strong>Cà dell'Arte Suite</strong>, Casselleria 5280, Castello — from Marco
+            Polo Airport</p>
+
+        <div class="transport-grid">
+            <!-- OPTION 1 -->
+            <div class="transport-card recommended">
+                <div class="label">Best for late arrival with kids</div>
+                <h3>🚤 Private Water Taxi</h3>
+                <div class="price">~€110–130 <small>per trip (whole family)</small></div>
+                <ul>
+                    <li>Direct from airport pier to nearest dock to your suite</li>
+                    <li>~35 min, no transfers</li>
+                    <li>Driver helps with luggage</li>
+                    <li>Pre-book via hotel or <a href="https://www.veneziataxi.it" target="_blank">veneziataxi.it</a>
+                    </li>
+                    <li>Can accommodate stroller + bags</li>
+                </ul>
+            </div>
+
+            <!-- OPTION 2 -->
+            <div class="transport-card">
+                <div class="label">Best value — great for daytime</div>
+                <h3>⛴️ <a href="https://www.alilaguna.it/en/lines/lines-map" target="_blank" rel="noopener">Alilaguna
+                        Blue Line</a></h3>
+                <div class="price">~€30 <small>total (2 adults + 2 kids)</small></div>
+                <ul>
+                    <li><strong>€15/adult</strong>, child under 6 = FREE, age 7 = €15</li>
+                    <li>Airport → <strong>San Zaccaria (B1)</strong> stop</li>
+                    <li>~75 min scenic ride through lagoon</li>
+                    <li>Then ~5 min walk to suite</li>
+                    <li>Strollers ride free; 1 suitcase included per ticket</li>
+                    <li>Runs until ~00:40 from airport — <a href="https://www.alilaguna.it/en/lines/lines-map"
+                            target="_blank" rel="noopener">check schedule</a></li>
+                    <li>Great for your <strong>return trip</strong> on Saturday morning!</li>
+                </ul>
+            </div>
+
+            <!-- OPTION 3 -->
+            <div class="transport-card">
+                <div class="label">Good middle-ground</div>
+                <h3>🚤 Shared Water Taxi Shuttle</h3>
+                <div class="price">~€25–39 <small>per person</small></div>
+                <ul>
+                    <li>Book in advance: <a href="https://www.tickadoo.com/en/venice/shared-water-taxi-transfer"
+                            target="_blank">Tickadoo</a>, <a href="https://www.venicelink.com" target="_blank">Venice
+                            Link</a>, or <a
+                            href="https://www.getyourguide.com/venice-l35/venice-shared-water-taxi-transfer-from-airport-t399488/"
+                            target="_blank">GetYourGuide</a></li>
+                    <li>Meet at <strong>Desk 71</strong> in arrivals, escorted to boat</li>
+                    <li>Small group boat, departs every 30–45 min</li>
+                    <li>Drops you near your hotel area</li>
+                    <li>Night surcharge after ~20:00</li>
+                    <li>~€100–140 total for family of 4</li>
+                </ul>
+            </div>
+
+            <!-- OPTION 4 -->
+            <div class="transport-card">
+                <div class="label">Land route via the bridge</div>
+                <h3>🚕 Regular Taxi + Vaporetto</h3>
+                <div class="price">~€70 <small>total (family of 4)</small></div>
+                <ul>
+                    <li>Call <a href="https://www.radiotaxivenezia.com" target="_blank">Radiotaxi Venezia</a> — €40
+                        fixed fare up to 4 pax</li>
+                    <li>Taxi across <strong>Ponte della Libertà</strong> → Piazzale Roma (~20 min)</li>
+                    <li>Then Night <a href="https://www.actv.it" target="_blank" rel="noopener">Vaporetto Line N</a> →
+                        San Zaccaria (~25 min, ~€10/person)</li>
+                    <li>Line N runs every 20–30 min after 23:30</li>
+                    <li>Transfer at Piazzale Roma with luggage + kids</li>
+                    <li><em>Cheapest option but involves waiting &amp; transfer</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem;">
+            <div class="card-header">
+                <div class="card-icon blue">📍</div>
+                <div>
+                    <div class="card-title">Walking from San Zaccaria to Your Suite</div>
+                </div>
+            </div>
+            <p>From the <strong>San Zaccaria</strong> vaporetto/Alilaguna stop, it's just a <strong>~5 minute
+                    walk</strong> (~300 m) to Casselleria 5280. Head north through the small alleyways of Castello —
+                it's flat, no bridges to cross. The route is pushchair-friendly.</p>
+            <p style="margin-top:.5rem;"><a
+                    href="https://www.google.com/maps/dir/San+Zaccaria,+Venice/Casselleria+5280,+30122+Venezia+VE,+Italy"
+                    target="_blank">📱 Open in Google Maps →</a></p>
+        </div>
+
+        <div class="tip-box">
+            <strong>🎒 Recommendation:</strong> Take a <strong>water taxi or shared shuttle on arrival</strong>
+            (Saturday night, you'll be tired with kids after two flights) and the <strong>Alilaguna Blue Line for
+                departure</strong> (Saturday morning, plenty of time — fun scenic ride for the kids!). For departure you
+            need to be at the airport by ~10:00 for your 12:20 flight (you have a connecting flight at AMS!), so catch
+            the Alilaguna from San Zaccaria around <strong>08:00–08:30</strong>.
+        </div>
+    </section>
+
+    <!-- ============ ACCOMMODATION ============ -->
+    <section class="section" id="accommodation">
+        <h2 class="section-title">🏠 Cà dell'Arte Suite</h2>
+        <p class="section-sub">Casselleria 5280, Castello, 30122 Venice, Italy</p>
+
+        <div class="accom-grid">
+            <div class="accom-stat">
+                <div class="icon">📅</div>
+                <div class="value">Check-in</div>
+                <div class="label">Sat 21 Feb · 15:00–22:30</div>
+            </div>
+            <div class="accom-stat">
+                <div class="icon">📅</div>
+                <div class="value">Check-out</div>
+                <div class="label">Sat 28 Feb · 07:00–11:00</div>
+            </div>
+            <div class="accom-stat">
+                <div class="icon">🔑</div>
+                <div class="value">Door Code</div>
+                <div class="label">Self check-in via door code</div>
+            </div>
+            <div class="accom-stat">
+                <div class="icon">👨‍👩‍👧‍👦</div>
+                <div class="value">1 Apartment</div>
+                <div class="label">2 adults + 2 children</div>
+            </div>
+        </div>
+
+        <div class="tip-box" style="margin-top:1.5rem;">
+            <strong>🔐 Entry:</strong> The door code opens both the main building entrance AND the suite door. You
+            received this via Booking.com — check your confirmation email for the exact code.
+        </div>
+    </section>
+
+    <!-- ============ ITINERARY ============ -->
+    <section class="section" id="itinerary">
+        <h2 class="section-title">📋 Day-by-Day Itinerary</h2>
+        <p class="section-sub">A family-friendly plan balancing sightseeing, restaurants, and downtime for the kids.
+            Venice Carnival ends Feb 17, so the city will be <em>wonderfully calm</em> during your visit — fewer crowds,
+            lower prices!</p>
+
+        <!-- DAY 1 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 1 — Arrival</div>
+            <div class="day-date">Saturday 21 February</div>
+            <div class="time-item">
+                <div class="time-badge">17:20</div>
+                <div class="time-text"><strong>KL 1182</strong> departs Stavanger → Amsterdam</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">18:55</div>
+                <div class="time-text"><strong>Arrive Schiphol.</strong> 1h 40min layover — grab dinner at the airport,
+                    kids play area.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">20:35</div>
+                <div class="time-text"><strong>KL 1637</strong> departs Amsterdam → Venice</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">22:15</div>
+                <div class="time-text"><strong>Land at Venice Marco Polo.</strong> Collect luggage.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">~22:45</div>
+                <div class="time-text"><strong>Water taxi / shared shuttle</strong> from airport → Castello.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">~23:20</div>
+                <div class="time-text"><strong>Arrive at Cà dell'Arte Suite.</strong> Use the door code. Settle in, kids
+                    to bed. 😴</div>
+            </div>
+        </div>
+
+        <!-- DAY 2 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 2 — Exploring Castello &amp; San Marco</div>
+            <div class="day-date">Sunday 22 February</div>
+            <div class="time-item">
+                <div class="time-badge">09:00</div>
+                <div class="time-text"><strong>Breakfast</strong> at a local café / bakery in Castello. Try
+                    <em>frittelle</em> (Venetian donuts — a February tradition!).
+                </div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">10:00</div>
+                <div class="time-text"><a href="https://www.google.com/maps/place/Piazza+San+Marco,+Venice"
+                        target="_blank"><strong>Piazza San Marco</strong></a> — just a 5 min walk! Let the kids marvel
+                    at the
+                    <a href="https://www.basilicasanmarco.it/en/" target="_blank">Basilica's</a> golden mosaics. Ride
+                    the elevator up the <a href="https://www.basilicasanmarco.it/en/bell-tower/"
+                        target="_blank"><strong>Campanile</strong></a> (bell tower) for
+                    amazing panoramic views.
+                </div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">12:00</div>
+                <div class="time-text"><strong>Lunch</strong> at <a
+                        href="https://www.google.com/maps/place/Trattoria+ai+Vecio+Canton/"
+                        target="_blank"><strong>Trattoria AI Vecio Canton</strong></a> (Castello,
+                    kids' menu available, homemade gelato!).</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">14:00</div>
+                <div class="time-text"><a href="https://palazzoducale.visitmuve.it/en/home/"
+                        target="_blank"><strong>Doge's Palace</strong></a> — explore the gilded halls, armoury, cross
+                    the
+                    Bridge of Sighs. Consider a family treasure-hunt tour. Allow ~2 hours. <a
+                        href="https://palazzoducale.visitmuve.it/en/plan-your-visit/tickets/" target="_blank">Buy
+                        tickets →</a></div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">16:30</div>
+                <div class="time-text"><strong>Gelato break</strong> and stroll along the waterfront <em>Riva degli
+                        Schiavoni</em> with views of the lagoon.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">18:30</div>
+                <div class="time-text"><strong>Dinner</strong> at <a
+                        href="https://www.google.com/maps/place/6342+A+Le+Tole/" target="_blank"><strong>Spaghetteria
+                            6342 A Le Tole</strong></a>
+                    (family-friendly, Venetian cuisine).</div>
+            </div>
+        </div>
+
+        <!-- DAY 3 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 3 — Rialto &amp; Grand Canal</div>
+            <div class="day-date">Monday 23 February</div>
+            <div class="time-item">
+                <div class="time-badge">09:00</div>
+                <div class="time-text"><a href="https://www.google.com/maps/place/Rialto+Market,+Venice/"
+                        target="_blank"><strong>Walk to Rialto Market</strong></a> (~15 min). Explore the vibrant
+                    morning
+                    fish &amp; produce stalls with the kids. Great sensory experience!</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">10:30</div>
+                <div class="time-text"><strong>Cross the Rialto Bridge</strong> — take photos! Browse the small shops
+                    nearby.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">11:30</div>
+                <div class="time-text"><strong>Traghetto ride</strong> across the Grand Canal — a mini gondola
+                    experience for just €2 per person. Kids will love it!</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">12:30</div>
+                <div class="time-text"><strong>Lunch</strong> at <a
+                        href="https://www.google.com/maps/place/Osteria+al+Portego/" target="_blank"><strong>Osteria Al
+                            Portego</strong></a> (tasty cicchetti,
+                    kid-friendly).</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">14:00</div>
+                <div class="time-text"><a href="https://actv.avmspa.it/en/content/lines-and-timetable"
+                        target="_blank"><strong>Vaporetto Line 1</strong></a> ride down the Grand Canal — sit in the
+                    front
+                    for the best views. This IS the sightseeing tour! Pass Ca' d'Oro, Accademia Bridge, all the Gothic
+                    palaces.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">15:30</div>
+                <div class="time-text"><a href="https://www.google.com/maps/place/Palazzo+Contarini+del+Bovolo/"
+                        target="_blank"><strong>Palazzo Contarini del Bovolo</strong></a> — unique spiral staircase.
+                    Kids
+                    under 12 free.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">17:00</div>
+                <div class="time-text">Free time / playground at <a
+                        href="https://www.google.com/maps/place/Giardini+ex+Reali/" target="_blank"><strong>Giardini
+                            Napoleonici</strong></a>.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">19:00</div>
+                <div class="time-text"><strong>Dinner</strong> at <a
+                        href="https://www.google.com/maps/place/Trattoria+Pizzeria+Ae+Do+Marie/"
+                        target="_blank"><strong>Trattoria Pizzeria Ae Do Marie</strong></a> —
+                    pizza night for the kids! 🍕</div>
+            </div>
+        </div>
+
+        <!-- DAY 4 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 4 — Murano &amp; Burano Islands</div>
+            <div class="day-date">Tuesday 24 February</div>
+            <div class="time-item">
+                <div class="time-badge">09:00</div>
+                <div class="time-text"><strong>Vaporetto to Murano</strong> (from Fondamente Nove, ~10 min ride). Buy
+                    tickets at the dock.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">09:30</div>
+                <div class="time-text"><strong>Glass-blowing demonstration</strong> — kids will be mesmerized watching
+                    artisans shape molten glass. (~€5/person, ~15 min). Visit the <a
+                        href="https://museovetro.visitmuve.it/en/home/" target="_blank">Glass Museum</a>.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">11:00</div>
+                <div class="time-text"><strong>Vaporetto to Burano</strong> (~30 min ride). The colourful houses are
+                    like stepping into a storybook!</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">11:30</div>
+                <div class="time-text">Explore the <a href="https://www.google.com/maps/place/Burano/"
+                        target="_blank"><strong>rainbow streets of Burano</strong></a>. Great for photos! Visit
+                    the <a href="https://museomerletto.visitmuve.it/en/home/" target="_blank">Lace Museum</a>.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">12:30</div>
+                <div class="time-text"><strong>Lunch on Burano</strong> — try fresh seafood or the local
+                    <em>bussolai</em> cookies. Let the kids run on the small playground.
+                </div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">14:30</div>
+                <div class="time-text"><strong>Return to Venice</strong> via vaporetto. Relax in the apartment or nap
+                    time for the little ones.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">18:00</div>
+                <div class="time-text"><strong>Dinner</strong> near the suite — <a
+                        href="https://www.google.com/maps/place/Aciughetta/"
+                        target="_blank"><strong>Aciughetta</strong></a> (wood-fired
+                    pizza, right near San Marco).</div>
+            </div>
+        </div>
+
+        <!-- DAY 5 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 5 — Museums &amp; Gondola</div>
+            <div class="day-date">Wednesday 25 February</div>
+            <div class="time-item">
+                <div class="time-badge">09:30</div>
+                <div class="time-text"><a href="https://msn.visitmuve.it" target="_blank" rel="noopener"><strong>Natural
+                            History Museum</strong></a> (Fondaco dei Turchi) — has dinosaur
+                    skeletons, fossil collection, interactive exhibits. A huge hit with kids ages 5–7!</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">12:00</div>
+                <div class="time-text"><strong>Lunch</strong> near the museum.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">14:00</div>
+                <div class="time-text"><strong>Gondola ride!</strong> 🛶 Official rate: ~€80 for 25–40 min (before 7
+                    PM), fits all 4 of you. Pure magic gliding through the narrow canals. <a
+                        href="https://www.google.com/maps/search/gondola+station+Venice/" target="_blank">Find gondola
+                        stations →</a></div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">15:30</div>
+                <div class="time-text"><a href="https://www.interactivedavincimuseum.com" target="_blank"
+                        rel="noopener"><strong>Leonardo da Vinci Interactive Museum</strong></a> — working replicas of
+                    his
+                    inventions. Great for the 7-year-old!</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">17:00</div>
+                <div class="time-text">Chill at a café for <strong>hot chocolate</strong> ☕ — Venetian hot chocolate is
+                    thick like pudding!</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">19:00</div>
+                <div class="time-text"><strong>Dinner</strong> at <a
+                        href="https://www.google.com/maps/place/Osteria+al+Pozzo+Roverso/"
+                        target="_blank"><strong>Osteria al Pozzo Roverso</strong></a> (Venetian
+                    cuisine, gluten-free options available).</div>
+            </div>
+        </div>
+
+        <!-- DAY 6 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 6 — Lido &amp; Art</div>
+            <div class="day-date">Thursday 26 February</div>
+            <div class="time-item">
+                <div class="time-badge">09:30</div>
+                <div class="time-text"><strong>Vaporetto to <a href="https://www.google.com/maps/place/Lido+di+Venezia/"
+                            target="_blank">Lido di Venezia</a></strong> (~15 min). A real island with
+                    beaches, wide streets, and a relaxed vibe. Kids can run on the sand (even in February!).</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">11:00</div>
+                <div class="time-text">Walk along the beach, rent bikes, or explore the Art Nouveau architecture.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">12:30</div>
+                <div class="time-text"><strong>Lunch on the Lido</strong> — more relaxed, local trattorias with space
+                    for kids.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">14:00</div>
+                <div class="time-text">Return to Venice. <a href="https://www.guggenheim-venice.it/en/"
+                        target="_blank"><strong>Peggy Guggenheim Collection</strong></a> — modern art in a
+                    beautiful palazzo on the Grand Canal. Free "Kids Day" workshops on Sundays (but the collection
+                    itself is fun for kids too — sculptures in the garden!). <a
+                        href="https://www.guggenheim-venice.it/en/plan-your-visit/tickets/" target="_blank">Buy tickets
+                        →</a></div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">16:30</div>
+                <div class="time-text"><strong>Mask-making workshop</strong> — find one near San Marco. Kids can paint
+                    their own Venetian masks to bring home as souvenirs! 🎭</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">19:00</div>
+                <div class="time-text"><strong>Dinner</strong> at <a
+                        href="https://www.google.com/maps/place/Ristorante+Cantina+Canaletto/"
+                        target="_blank"><strong>Ristorante Cantina Canaletto</strong></a>
+                    (Castello area).</div>
+            </div>
+        </div>
+
+        <!-- DAY 7 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 7 — Boat Tour &amp; Farewell Evening</div>
+            <div class="day-date">Friday 27 February</div>
+            <div class="time-item">
+                <div class="time-badge">09:30</div>
+                <div class="time-text"><a href="https://www.google.com/maps/place/Naval+History+Museum,+Venice/"
+                        target="_blank"><strong>Naval History Museum</strong></a> (Castello!) — right in your
+                    neighbourhood.
+                    Ship models, old boats, canons. Perfect for adventurous kids.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">11:30</div>
+                <div class="time-text">Revisit favourite spots, <strong>last-minute souvenir shopping</strong> —
+                    Venetian masks, glass figurines from Murano.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">12:30</div>
+                <div class="time-text"><strong>Lunch</strong> at <a
+                        href="https://www.google.com/maps/place/Antica+Sacrestia/" target="_blank"><strong>Antica
+                            Sacrestia</strong></a> — lovely courtyard
+                    setting.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">14:30</div>
+                <div class="time-text">Rest / pack / kids nap.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">19:00</div>
+                <div class="time-text">🌟 <strong>Private Boat Excursion</strong> — the perfect farewell to Venice!
+                    Cruise through the canals on a luxurious speedboat. Bring prosecco for the adults! (See details
+                    below.)</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">20:30</div>
+                <div class="time-text"><strong>Final dinner</strong> — somewhere special you loved during the week. ❤️
+                </div>
+            </div>
+        </div>
+
+        <!-- DAY 8 -->
+        <div class="day-block">
+            <div class="day-dot"></div>
+            <div class="day-label">Day 8 — Departure</div>
+            <div class="day-date">Saturday 28 February</div>
+            <div class="time-item">
+                <div class="time-badge">07:00</div>
+                <div class="time-text"><strong>Wake up, pack final items, breakfast.</strong></div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">08:00</div>
+                <div class="time-text"><strong>Check out.</strong> Head to San Zaccaria stop.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">~08:30</div>
+                <div class="time-text"><strong>Alilaguna Blue Line</strong> San Zaccaria → Marco Polo Airport (~75 min
+                    scenic ride). A beautiful farewell across the lagoon! 🌊</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">~09:45</div>
+                <div class="time-text"><strong>Arrive at airport.</strong> Check in &amp; drop bags for connecting KLM
+                    flights.</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">12:20</div>
+                <div class="time-text"><strong>KL 1630</strong> Venice → Amsterdam (arrive 14:20)</div>
+            </div>
+            <div class="time-item">
+                <div class="time-badge">15:05</div>
+                <div class="time-text"><strong>KL 1181</strong> Amsterdam → Stavanger (arrive 16:35). Home! ��✈️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BOAT TOUR ============ -->
+    <section class="section" id="boat-tour">
+        <h2 class="section-title">🚤 Scenic Boat Excursion</h2>
+        <p class="section-sub">Your host Mark offers an exclusive boat tour — a stunning way to end your trip!</p>
+
+        <div class="boat-offer">
+            <h3>🛥️ Private Speedboat Cruise Through the Canals</h3>
+            <p style="color:var(--text-dim);font-size:.92rem;margin-bottom:1rem;">"Imagine discovering our beautiful
+                city on board a luxurious speedboat slowly cruising through our canals." — Mark, your host</p>
+
+            <div class="offer-compare">
+                <div class="offer-option">
+                    <h4>Shared Excursion</h4>
+                    <div class="price-tag dim">€40 <small style="font-size:.8rem;font-weight:400;">/person</small></div>
+                    <p>Daily at 4:00 PM</p>
+                    <p>€160 total for 4 people</p>
+                </div>
+                <div class="offer-option highlight">
+                    <h4>🌟 Private Excursion</h4>
+                    <div class="price-tag">€200 <small style="font-size:.8rem;font-weight:400;">total</small></div>
+                    <p><span class="strike">€320</span> — 38% discount!</p>
+                    <p>Your choice of time (7 PM or 8 PM suggested)</p>
+                    <p>Bring your own prosecco/drinks on board 🥂</p>
+                    <p><strong>Just your family — private experience!</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <strong>💡 Our take:</strong> The <strong>private option at €200</strong> is an incredible deal — only €40
+            more than the shared version, but you get a private boat, flexible timing, and you can bring your own
+            drinks. Book for <strong>Friday 27 Feb at 7 PM</strong> as a farewell cruise. Reply to Mark via the
+            Booking.com inbox message. The kids will love the evening boat ride through lit-up Venice!
+        </div>
+    </section>
+
+    <!-- ============ RESTAURANTS ============ -->
+    <section class="section" id="restaurants">
+        <h2 class="section-title">🍝 Family-Friendly Restaurants</h2>
+        <p class="section-sub">All in or near Castello — walking distance from your suite</p>
+
+        <div class="resto-list">
+            <div class="resto-item">
+                <div class="resto-num">1</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/Trattoria+ai+Vecio+Canton/"
+                            target="_blank">Trattoria AI Vecio Canton</a></div>
+                    <div class="resto-desc">Kids' menu, stroller-accessible, pasta/pizza + homemade gelato. Castello.
+                    </div>
+                </div>
+            </div>
+            <div class="resto-item">
+                <div class="resto-num">2</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/6342+A+Le+Tole/"
+                            target="_blank">Spaghetteria 6342 A Le Tole</a></div>
+                    <div class="resto-desc">Family-friendly Venetian cuisine. Great pasta selection. Castello.</div>
+                </div>
+            </div>
+            <div class="resto-item">
+                <div class="resto-num">3</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/Osteria+al+Portego/"
+                            target="_blank">Osteria Al Portego</a></div>
+                    <div class="resto-desc">Tasty cicchetti (Venetian tapas), kid-friendly dishes. Castello.</div>
+                </div>
+            </div>
+            <div class="resto-item">
+                <div class="resto-num">4</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/Trattoria+Pizzeria+Ae+Do+Marie/"
+                            target="_blank">Trattoria Pizzeria Ae Do Marie</a></div>
+                    <div class="resto-desc">Italian classics, pizza for the kids. Family-friendly. Castello.</div>
+                </div>
+            </div>
+            <div class="resto-item">
+                <div class="resto-num">5</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/Aciughetta/"
+                            target="_blank">Aciughetta</a></div>
+                    <div class="resto-desc">Wood-fired pizza, near San Marco. Indoor/outdoor seating. Quick and
+                        reliable.</div>
+                </div>
+            </div>
+            <div class="resto-item">
+                <div class="resto-num">6</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/Osteria+al+Pozzo+Roverso/"
+                            target="_blank">Osteria al Pozzo Roverso</a></div>
+                    <div class="resto-desc">Venetian cuisine, gluten-free options. Kid-friendly. Castello.</div>
+                </div>
+            </div>
+            <div class="resto-item">
+                <div class="resto-num">7</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/Antica+Sacrestia/"
+                            target="_blank">Antica Sacrestia</a></div>
+                    <div class="resto-desc">Beautiful plant-filled courtyard, great for a special meal. Castello.</div>
+                </div>
+            </div>
+            <div class="resto-item">
+                <div class="resto-num">8</div>
+                <div>
+                    <div class="resto-name"><a href="https://www.google.com/maps/place/Ristorante+Cantina+Canaletto/"
+                            target="_blank">Ristorante Cantina Canaletto</a></div>
+                    <div class="resto-desc">Kid-friendly restaurant in Castello. Reliable Italian fare.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box" style="margin-top:1.5rem;">
+            <strong>🍽️ General tips:</strong> Venice restaurants usually don't have formal "kids' menus" but will
+            happily serve <em>mezza porzione</em> (half portion) of pasta or pizza for children. Lunch is typically
+            12–14:30, dinner 19–21:30. Always say <em>"Tavolo per quattro, per favore"</em> (table for four, please).
+        </div>
+    </section>
+
+    <!-- ============ TIPS ============ -->
+    <section class="section" id="tips">
+        <h2 class="section-title">💡 Practical Tips</h2>
+        <p class="section-sub">Making Venice easy with kids aged 5 and 7</p>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon gold">🎫</div>
+                <div class="card-title">Transport Passes</div>
+            </div>
+            <ul>
+                <li><strong>Vaporetto tickets:</strong> A 7-day pass is €65/adult. Children under 6 ride
+                    <strong>free</strong>. Your 7-year-old needs a ticket. Single rides are €9.50, so a pass pays for
+                    itself quickly.
+                </li>
+                <li><strong>Alilaguna</strong> is a separate service — vaporetto passes do NOT work on Alilaguna.</li>
+                <li>Buy at <a href="https://www.veneziaunica.it" target="_blank">veneziaunica.it</a> or at any ACTV
+                    ticket office.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon green">🌤️</div>
+                <div class="card-title">Weather in Late February</div>
+            </div>
+            <ul>
+                <li>Expect <strong>5–10°C</strong> daytime, colder evenings. Dress in layers.</li>
+                <li>Rain is possible — bring <strong>waterproof jackets</strong> and shoes.</li>
+                <li><strong>Acqua alta</strong> (high water) can happen. Check the <a
+                        href="https://www.comune.venezia.it/it/content/centro-previsioni-e-segnalazioni-maree"
+                        target="_blank">tide forecast</a>. If water rises, elevated walkways are set up at main routes.
+                    Consider packing foldable wellies for the kids!</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon blue">👶</div>
+                <div class="card-title">Venice with Kids</div>
+            </div>
+            <ul>
+                <li><strong>Stroller vs carrier:</strong> A lightweight umbrella stroller works in Castello (flat area),
+                    but a child carrier/backpack is better for exploring areas with many bridges.</li>
+                <li><strong>Playgrounds:</strong> Giardini Napoleonici (near your suite!), Parco Savorgnan (near train
+                    station), and Burano island playground.</li>
+                <li><strong>Snacks:</strong> Carry snacks and water — there are few shops in quiet alleyways. Bakeries
+                    open early for fresh pastries.</li>
+                <li><strong>Pace yourselves:</strong> Don't over-schedule. The magic of Venice is wandering and getting
+                    happily lost.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon purple">💰</div>
+                <div class="card-title">Budget Estimate (Activities)</div>
+            </div>
+            <ul>
+                <li><strong>Water taxi (arrival):</strong> ~€120</li>
+                <li><strong>Alilaguna (departure):</strong> ~€45</li>
+                <li><strong>7-day vaporetto pass (×2 adult + 1 child):</strong> ~€195</li>
+                <li><strong>Doge's Palace:</strong> ~€30/adult, kids under 6 free, age 6–14 ~€15</li>
+                <li><strong>Gondola ride:</strong> ~€80</li>
+                <li><strong>Private boat tour:</strong> €200</li>
+                <li><strong>Museums & attractions:</strong> ~€50–80 total</li>
+                <li><strong>Meals (7 days):</strong> ~€70–120/day for family of 4</li>
+                <li style="margin-top:.5rem;"><strong>Rough total (excl. flights & accommodation):</strong> €1,200–1,600
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon rose">📱</div>
+                <div class="card-title">Essential Apps & Links</div>
+            </div>
+            <ul>
+                <li><a href="https://www.veneziaunica.it" target="_blank">VeneziaUnica</a> — Vaporetto passes, museum
+                    tickets</li>
+                <li><a href="https://www.alilaguna.it" target="_blank">Alilaguna</a> — Airport water bus timetables</li>
+                <li><a href="https://www.google.com/maps/dir/San+Zaccaria,+Venice/Casselleria+5280,+30122+Venezia+VE,+Italy"
+                        target="_blank">Google Maps: San Zaccaria → Suite</a></li>
+                <li><strong>Hi!Tide Venice</strong> (app) — Real-time acqua alta alerts</li>
+                <li><strong>Google Translate</strong> — Useful for menus and signs</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <p>🇮🇹 Buon viaggio! Have an incredible week in Venice.</p>
+        <p style="margin-top:.5rem;opacity:.5;">Generated for the Juhler family · Feb 2026</p>
+    </footer>
+
+    <!-- ============ SCROLL ACTIVE NAV ============ -->
+    <script>
+        const navLinks = document.querySelectorAll('.sticky-nav a');
+        const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href')));
+
+        function updateNav() {
+            let current = '';
+            sections.forEach((sec, i) => {
+                if (sec && sec.getBoundingClientRect().top <= 120) {
+                    current = navLinks[i].getAttribute('href');
+                }
+            });
+            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === current));
+        }
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+    </script>
+
+</body>
+
+</html>
