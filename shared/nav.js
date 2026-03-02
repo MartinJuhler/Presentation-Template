@@ -19,6 +19,12 @@
         navDots.appendChild(dot);
     });
 
+    // Assign stagger index to reveal elements (top-to-bottom order)
+    slides.forEach(slide => {
+        slide.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-blur')
+            .forEach((el, i) => el.style.setProperty('--i', i));
+    });
+
     // Track active slide via IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

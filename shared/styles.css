@@ -433,9 +433,10 @@ body {
 /* ========== REVEAL ANIMATIONS ========== */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 0.06s);
 }
 
 .slide.visible .reveal {
@@ -443,37 +444,13 @@ body {
     transform: translateY(0);
 }
 
-/* Staggered children */
-.reveal:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.reveal:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.reveal:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.reveal:nth-child(4) {
-    transition-delay: 0.4s;
-}
-
-.reveal:nth-child(5) {
-    transition-delay: 0.5s;
-}
-
-.reveal:nth-child(6) {
-    transition-delay: 0.6s;
-}
-
 /* Scale In variant */
 .reveal-scale {
     opacity: 0;
     transform: scale(0.9);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 0.06s);
 }
 
 .slide.visible .reveal-scale {
@@ -484,9 +461,10 @@ body {
 /* Slide from Left variant */
 .reveal-left {
     opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-30px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 0.06s);
 }
 
 .slide.visible .reveal-left {
@@ -498,8 +476,9 @@ body {
 .reveal-blur {
     opacity: 0;
     filter: blur(10px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 0.06s);
 }
 
 .slide.visible .reveal-blur {
