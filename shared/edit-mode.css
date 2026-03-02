@@ -1,0 +1,133 @@
+/* ═══════════════════════════════════════════════
+   Edit Mode Styles
+   Floating toolbar + contenteditable indicators
+   ═══════════════════════════════════════════════ */
+
+/* Edit toolbar — fixed bottom-right */
+.edit-toolbar {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.edit-btn {
+    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(16px);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.edit-toggle {
+    background: rgba(17, 24, 39, 0.85);
+    color: #94a3b8;
+}
+
+.edit-toggle:hover {
+    border-color: rgba(79, 195, 247, 0.4);
+    color: #4fc3f7;
+}
+
+.edit-toggle.active {
+    background: rgba(79, 195, 247, 0.15);
+    border-color: rgba(79, 195, 247, 0.4);
+    color: #4fc3f7;
+}
+
+.save-btn {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.35);
+    color: #10b981;
+    display: none;
+}
+
+.save-btn:hover {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.edit-active .save-btn {
+    display: flex;
+}
+
+/* Editable element indicators */
+body.edit-active [contenteditable="true"] {
+    outline: 1px dashed rgba(79, 195, 247, 0.25);
+    outline-offset: 3px;
+    border-radius: 4px;
+    transition: outline-color 0.2s, background 0.2s;
+    min-height: 1em;
+}
+
+body.edit-active [contenteditable="true"]:hover {
+    outline-color: rgba(79, 195, 247, 0.5);
+}
+
+body.edit-active [contenteditable="true"]:focus {
+    outline: 1px solid rgba(79, 195, 247, 0.6);
+    background: rgba(79, 195, 247, 0.04);
+}
+
+/* Active indicator bar */
+body.edit-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4fc3f7, #10b981);
+    z-index: 10000;
+}
+
+/* Toast notifications */
+.edit-toast {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 10001;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    backdrop-filter: blur(16px);
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.edit-toast.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.edit-toast.success {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+
+.edit-toast.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.edit-toast.info {
+    background: rgba(79, 195, 247, 0.15);
+    border: 1px solid rgba(79, 195, 247, 0.3);
+    color: #4fc3f7;
+}
