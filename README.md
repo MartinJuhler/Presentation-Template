@@ -6,6 +6,26 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
 
 ---
 
+## 🎬 Interactive How-To Guide
+
+**New here?** Start with the step-by-step walkthrough — it takes you from zero to polished slides in minutes:
+
+### [▶️ Start the Walkthrough](https://martinjuhler.github.io/Presentation-Template/walkthrough/)
+
+---
+
+## 🐟 Live Examples — AKVA Nautilus Deep Farming
+
+See what the template produces. These three formats were generated from the same source material about AKVA's submersible aquaculture solution:
+
+| Format | Description | Link |
+|--------|-------------|------|
+| 📊 **Full Deck** | 6 slides — problem, solution, stats, timeline, deep-dive | [View Presentation](https://martinjuhler.github.io/Presentation-Template/akva-nautilus/presentation.html) |
+| ⚡ **3-Slide Pitch** | Quick pitch — problem → solution → results | [View Pitch](https://martinjuhler.github.io/Presentation-Template/akva-nautilus/presentation-short.html) |
+| 📄 **One-Pager** | Print-ready A4 executive summary | [View One-Pager](https://martinjuhler.github.io/Presentation-Template/akva-nautilus/onepager.html) |
+
+---
+
 ## ✨ What You Get
 
 | Feature | Description |
@@ -32,35 +52,37 @@ git clone https://github.com/YOUR-USERNAME/Presentations.git
 cd Presentations
 ```
 
-### 2. Create your first presentation
-
-Copy the starter template:
+### 2. Open in VS Code
 
 ```bash
-cp -r _starter my-project
+code .
 ```
 
-Edit the HTML files in `my-project/` — the starter includes:
+Copilot automatically reads the `.agent/` folder for design rules and skills.
 
-- **`presentation.html`** — 4-slide deck with title, problem, solution, and CTA slides
-- **`onepager.html`** — A4 print-ready one-pager
+### 3. Paste your knowledge into AI
 
-### 3. Preview locally
+Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points, product specs. No formatting needed.
 
-Open any HTML file directly in your browser, or use a local server:
+### 4. Ask AI to build your slides
+
+```
+@workspace Read .agent/skills/SKILL.md for the design system.
+Based on the knowledge I just shared, create three presentations:
+a one-pager, a 3-slide pitch, and a full 6-slide deck about [your topic].
+```
+
+### 5. Preview locally
+
+Open any HTML file directly in your browser — no build step, no server needed:
 
 ```bash
-# Python
-python -m http.server 8000
-
-# Node.js
-npx serve .
-
-# VS Code
-# Install "Live Server" extension → right-click → Open with Live Server
+# Or use a local server:
+python -m http.server 8000    # Python
+npx serve .                   # Node.js
 ```
 
-### 4. Deploy to GitHub Pages
+### 6. Deploy to GitHub Pages
 
 1. Go to your repo → **Settings** → **Pages**
 2. Source: **Deploy from a branch**
@@ -82,6 +104,14 @@ Presentations/
 ├── _starter/                  # Example starter templates
 │   ├── presentation.html      # Slide deck template
 │   └── onepager.html          # Print-ready one-pager template
+│
+├── akva-nautilus/              # ← Live example (AKVA deep farming)
+│   ├── presentation.html      # Full 6-slide deck
+│   ├── presentation-short.html # 3-slide pitch
+│   └── onepager.html          # Executive one-pager
+│
+├── walkthrough/               # Interactive how-to guide
+│   └── index.html             # Step-by-step walkthrough
 │
 ├── my-project/                # ← Your presentations go here
 │   ├── presentation.html      # Full slide deck
