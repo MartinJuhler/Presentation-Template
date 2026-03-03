@@ -6,10 +6,28 @@
 (function () {
     'use strict';
 
-    // Config — reads from <meta> tags in the HTML
-    const OWNER = 'MartinJuhler';
-    const REPO = 'Presentations';
-    const BRANCH = 'main';
+    // Config — reads from <meta> tags in the HTML, with auto-detect fallback
+    function getMeta(name) {
+        const el = document.querySelector(`meta[name="${name}"]`);
+        return el ? el.getAttribute('content') : null;
+    }
+
+    const OWNER = getMeta('gh-owner') || (() => {
+        // Auto-detect from GitHub Pages hostname: USERNAME.github.io
+        const m = window.location.hostname.match(/^(.+)\.github\.io$/);
+        return m ? m[1] : '';
+    })();
+
+    const REPO = getMeta('gh-repo') || (() => {
+        // Auto-detect from GitHub Pages path: /REPO-NAME/...
+        if (window.location.hostname.includes('github.io')) {
+            const parts = window.location.pathname.split('/').filter(Boolean);
+            return parts[0] || '';
+        }
+        return '';
+    })();
+
+    const BRANCH = getMeta('gh-branch') || 'main';
 
     // Selectors for editable content elements
     const EDITABLE_SELECTORS = [

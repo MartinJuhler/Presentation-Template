@@ -173,14 +173,21 @@ var(--text-secondary)   /* #94a3b8 — secondary text */
 
 ## ✏️ Edit Mode
 
-Press **`E`** on any presentation to toggle edit mode:
+Click the **⚡ Edit** button on any presentation to toggle inline editing:
 
-- All `contenteditable` elements become editable
-- A visual indicator appears showing edit mode is active
-- Changes persist only in the current session (refresh to reset)
-- Add `contenteditable="true"` to any element you want to be editable
+- All text elements become editable — click and type to change content
+- Click **💾 Save** to commit changes directly to your GitHub repo
+- Your first save will ask for a GitHub Personal Access Token (PAT) with `contents:write` scope
+- The token is stored in `localStorage` for future saves
 
-This is great for making last-minute adjustments before presenting.
+**Repo auto-detection**: On GitHub Pages, the repo owner and name are auto-detected from the URL. For custom hosting, add meta tags to your HTML `<head>`:
+
+```html
+<meta name="gh-owner" content="YOUR-USERNAME">
+<meta name="gh-repo" content="YOUR-REPO-NAME">
+```
+
+This lets you make quick edits and polish directly in the browser, with changes saved back to GitHub.
 
 ---
 
