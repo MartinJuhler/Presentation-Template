@@ -33,9 +33,13 @@ Includes AKVA Nautilus example presentations (full deck, 3-slide pitch, one-page
 
 ## 🚀 Quick Start
 
-### 1. Use this template
+### 1. Get the template
 
-Click **"Use this template"** on GitHub (or fork the repo), then clone:
+**Option A — Download ZIP** (no git needed):
+Click **Code → Download ZIP** on the [repo page](https://github.com/MartinJuhler/Presentation-Template), unzip, and open the folder.
+
+**Option B — Use this template** (recommended if you have git):
+Click **"Use this template"** on GitHub, give it a name, then clone:
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/Presentations.git
