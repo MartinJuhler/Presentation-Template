@@ -8,11 +8,7 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
 
 ## 🎬 See It in Action
 
-### [▶️ Interactive How-To Walkthrough](https://martinjuhler.github.io/Presentation-Template/walkthrough/)
-
-### [🐟 Live Examples & Dashboard](https://martinjuhler.github.io/Presentation-Template/)
-
-Includes AKVA Nautilus example presentations (full deck, 3-slide pitch, one-pager) — all generated from the same source material.
+### [🚀 Open the Dashboard — walkthrough, live examples & more →](https://martinjuhler.github.io/Presentation-Template/)
 
 ---
 
@@ -63,8 +59,18 @@ Includes AKVA Nautilus example presentations (full deck, 3-slide pitch, one-page
    ```
 
 2. **Copilot reads the skill automatically** — The `.agent/` folder gives Copilot full context on the design system
-3. **Paste your knowledge** — Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points, product specs
-4. **Prompt** —
+3. **Supercharge with MCP & CLI** *(optional)* — Give Copilot direct access to your tools:
+
+   ```
+   # Ask Copilot to configure MCP for you:
+   "Set up MCP access for this project — GitHub MCP server
+    for repo operations. Configure .vscode/mcp.json if needed."
+   ```
+
+   With MCP enabled, Copilot can create branches, commit, push, and deploy — all from chat. You can also install the [GitHub CLI](https://cli.github.com/) (`gh`) for terminal-based repo management.
+
+4. **Paste your knowledge** — Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points, product specs
+5. **Prompt** —
 
    ```
    @workspace Read .agent/skills/SKILL.md for the design system.
@@ -72,8 +78,8 @@ Includes AKVA Nautilus example presentations (full deck, 3-slide pitch, one-page
    a one-pager, a 3-slide pitch, and a full 6-slide deck about [your topic].
    ```
 
-5. **Preview** — Open any HTML file directly in your browser — no build step needed
-6. **Deploy** — Push to `main` and enable **GitHub Pages** (Settings → Pages → branch `main` / root) — your presentations are live at `https://YOUR-USERNAME.github.io/Presentations/`
+6. **Preview** — Open any HTML file directly in your browser — no build step needed
+7. **Deploy** — Push to `main` and enable **GitHub Pages** (Settings → Pages → branch `main` / root) — your presentations are live at `https://YOUR-USERNAME.github.io/Presentations/`
 
 ---
 
@@ -87,18 +93,13 @@ Presentations/
 │   ├── edit-mode.css          # Edit mode styles
 │   └── edit-mode.js           # Press E to edit text inline
 │
-├── akva-nautilus/              # ← Live example — copy this to start your own
+├── akva-nautilus/             # ← Live example — copy this to start your own
 │   ├── presentation.html      # Full 6-slide deck
 │   ├── presentation-short.html # 3-slide pitch
 │   └── onepager.html          # Executive one-pager
 │
 ├── walkthrough/               # Interactive how-to guide
 │   └── index.html             # Step-by-step walkthrough
-│
-├── my-project/                # ← Your presentations go here
-│   ├── presentation.html      # Full slide deck
-│   ├── presentation-short.html # Executive summary (optional)
-│   └── onepager.html          # One-pager (optional)
 │
 ├── .agent/                    # AI coding assistant configuration
 │   ├── skills/SKILL.md        # Design system documentation for AI
