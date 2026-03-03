@@ -6,23 +6,13 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
 
 ---
 
-## 🎬 Interactive How-To Guide
+## 🎬 See It in Action
 
-**New here?** Start with the step-by-step walkthrough — it takes you from zero to polished slides in minutes:
+### [▶️ Interactive How-To Walkthrough](https://martinjuhler.github.io/Presentation-Template/walkthrough/)
 
-### [▶️ Start the Walkthrough](https://martinjuhler.github.io/Presentation-Template/walkthrough/)
+### [🐟 Live Examples & Dashboard](https://martinjuhler.github.io/Presentation-Template/)
 
----
-
-## 🐟 Live Examples — AKVA Nautilus Deep Farming
-
-See what the template produces. These three formats were generated from the same source material about AKVA's submersible aquaculture solution:
-
-| Format | Description | Link |
-|--------|-------------|------|
-| 📊 **Full Deck** | 6 slides — problem, solution, stats, timeline, deep-dive | [View Presentation](https://martinjuhler.github.io/Presentation-Template/akva-nautilus/presentation.html) |
-| ⚡ **3-Slide Pitch** | Quick pitch — problem → solution → results | [View Pitch](https://martinjuhler.github.io/Presentation-Template/akva-nautilus/presentation-short.html) |
-| 📄 **One-Pager** | Print-ready A4 executive summary | [View One-Pager](https://martinjuhler.github.io/Presentation-Template/akva-nautilus/onepager.html) |
+Includes AKVA Nautilus example presentations (full deck, 3-slide pitch, one-pager) — all generated from the same source material.
 
 ---
 
