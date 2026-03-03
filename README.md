@@ -40,16 +40,16 @@ Includes AKVA Nautilus example presentations (full deck, 3-slide pitch, one-page
 ### 🟢 Path A — Simple (no git needed)
 
 1. **Download** — Click **Code → Download ZIP** on the [repo page](https://github.com/MartinJuhler/Presentation-Template) and unzip
-2. **Open the skill file** — Find `.agent/skills/SKILL.md` and copy its contents
-3. **Paste into any AI** — ChatGPT, Claude, Gemini, Copilot — whatever you use. Paste the skill file, then add your own content (meeting notes, bullet points, product specs)
-4. **Prompt** —
+2. **Open in VS Code** — Open the unzipped folder in VS Code. Copilot automatically reads the `.agent/` skill file
+3. **Prompt** — Open Copilot Chat, paste your content (meeting notes, bullet points, specs), then:
 
    ```
-   Using the design system I just shared, create three HTML presentations
-   about [your topic]: a one-pager, a 3-slide pitch, and a full 6-slide deck.
+   @workspace Read .agent/skills/SKILL.md for the design system.
+   Create three presentations about [your topic]:
+   a one-pager, a 3-slide pitch, and a full 6-slide deck.
    ```
 
-5. **Preview** — Save the generated HTML files into the project folder and open them in your browser. Done!
+4. **Save & Preview** — Save the generated HTML files into the project folder, then open `index.html` in your browser. Done!
 
 ---
 
