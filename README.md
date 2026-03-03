@@ -91,11 +91,7 @@ Presentations/
 │   ├── edit-mode.css          # Edit mode styles
 │   └── edit-mode.js           # Press E to edit text inline
 │
-├── _starter/                  # Example starter templates
-│   ├── presentation.html      # Slide deck template
-│   └── onepager.html          # Print-ready one-pager template
-│
-├── akva-nautilus/              # ← Live example (AKVA deep farming)
+├── akva-nautilus/              # ← Live example — copy this to start your own
 │   ├── presentation.html      # Full 6-slide deck
 │   ├── presentation-short.html # 3-slide pitch
 │   └── onepager.html          # Executive one-pager
