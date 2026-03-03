@@ -465,7 +465,7 @@
         </p>
         <p class="step-subtitle reveal" style="margin-top: 1rem; color: var(--accent-red); font-weight: 600;">
             Old approach → 2 hours fighting PowerPoint, aligning boxes, choosing fonts.<br>
-            New approach → dump your notes, let AI build the slides. Done in minutes.
+            New approach → paste your notes into AI, get polished slides. Done in minutes.
         </p>
         <div class="step-number">00</div>
     </div>
@@ -523,33 +523,42 @@
         <div class="step-number">02</div>
     </div>
 
-    <!-- ==================== STEP 3: Dump Knowledge ==================== -->
+    <!-- ==================== STEP 3: Add Knowledge to AI ==================== -->
     <div class="step">
         <div class="buzzword buzzword-amber">🧠 KNOWLEDGE IN</div>
         <div class="step-label reveal" style="color: var(--accent-amber);">STEP 3</div>
-        <h1 class="step-title reveal">Dump your knowledge</h1>
+        <h1 class="step-title reveal">Add your knowledge</h1>
         <p class="step-subtitle reveal">
-            Create a folder for your topic. Drop in your notes — markdown, text, URLs, whatever you have.
-            No formatting needed.
+            Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points,
+            product specs. No formatting needed. The AI reads it all.
         </p>
 
-        <div class="code-block reveal" style="--i: 2;">
-            <span class="code-prompt">$</span> <span class="code-command">mkdir</span> <span
-                class="code-string">akva-nautilus</span><br>
-            <span class="code-prompt">$</span> <span class="code-command">cp</span> <span
-                class="code-string">~/notes/nautilus-research.md akva-nautilus/</span>
+        <div class="mockup-browser reveal" style="--i: 2;">
+            <div class="mockup-toolbar">
+                <div class="mockup-dot"></div>
+                <div class="mockup-dot"></div>
+                <div class="mockup-dot"></div>
+                <div class="mockup-url">Copilot Chat</div>
+            </div>
+            <div class="mockup-content" style="font-size: 0.8rem;">
+                <div style="display: flex; gap: 8px; align-items: flex-start;">
+                    <span
+                        style="background: var(--accent-blue); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; white-space: nowrap;">YOU</span>
+                    <span style="color: var(--text-secondary); line-height: 1.5;">Here's what I know about our Nautilus
+                        submersible pen system:<br><br>
+                        - World's first commercial submersible pen<br>
+                        - 50% fewer sea lice incidents<br>
+                        - Withstands Hs 3m waves during submersion<br>
+                        - Used by Nordlaks at Håbranden since 2024<br>
+                        - Check https://akvagroup.com/cage-farming/nautilus for more details
+                    </span>
+                </div>
+            </div>
         </div>
 
-        <div class="file-tree reveal" style="--i: 3; margin-top: 1.5rem;">
-            <span class="folder">📁 my-presentations/</span><br>
-            &nbsp;&nbsp;├── <span class="folder highlight">📁 akva-nautilus/</span> <span
-                class="new-badge">NEW</span><br>
-            &nbsp;&nbsp;│&nbsp;&nbsp; └── <span class="highlight">nautilus-research.md</span> <span
-                class="new-badge">YOUR NOTES</span><br>
-            &nbsp;&nbsp;├── <span class="folder">📁 _starter/</span><br>
-            &nbsp;&nbsp;├── <span class="folder">📁 shared/</span><br>
-            &nbsp;&nbsp;└── <span class="file">index.html</span>
-        </div>
+        <p class="reveal" style="--i: 3; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
+            💡 Just paste raw notes, URLs, or key points. The AI does the research and structuring.
+        </p>
         <div class="step-number">03</div>
     </div>
 
@@ -574,7 +583,7 @@
                     <span
                         style="background: var(--accent-blue); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; white-space: nowrap;">YOU</span>
                     <span style="color: var(--text-secondary); line-height: 1.5;">@workspace Read .agent/skills/SKILL.md
-                        for the design system. Then read the notes in akva-nautilus/ and create three presentations: a
+                        for the design system. Based on the knowledge I just shared, create three presentations: a
                         one-pager, a 3-slide pitch, and a full 6-slide deck about AKVA's Nautilus deep farming
                         solution.</span>
                 </div>
@@ -650,7 +659,7 @@
         <div class="step-label reveal" style="color: var(--accent-green);">THE RESULT</div>
         <h1 class="step-title reveal">Three formats. One prompt.</h1>
         <p class="step-subtitle reveal">
-            From dumped notes to polished, animated, presentation-ready HTML.
+            From raw notes to polished, animated, presentation-ready HTML.
             Click below to see the actual output:
         </p>
 
@@ -684,7 +693,7 @@
         <div class="step-label reveal" style="color: var(--accent-purple);">YOUR TURN</div>
         <h1 class="step-title reveal" style="max-width: 700px;">Ready to stop fighting PowerPoint?</h1>
         <p class="step-subtitle reveal" style="text-align: center; max-width: 500px;">
-            The template is open source and free. Clone it, dump your notes,
+            The template is open source and free. Clone it, paste your knowledge,
             and let AI do the design work.
         </p>
 
