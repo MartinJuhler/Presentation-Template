@@ -47,8 +47,8 @@ Read the design system skill first:
        <p class="project-desc">Brief description.</p>
        <div class="links">
            <a class="primary" href="<project>/presentation.html">📊 Full Presentation</a>
-           <a href="<project>/presentation-short.html">⚡ Executive Summary</a>
-           <a href="<project>/onepager.html">📄 One-Pager</a>
+           <a class="primary" href="<project>/presentation-short.html">⚡ Executive Summary</a>
+           <a class="primary" href="<project>/onepager.html">📄 One-Pager</a>
        </div>
    </div>
    ```
