@@ -33,55 +33,47 @@ Includes AKVA Nautilus example presentations (full deck, 3-slide pitch, one-page
 
 ## 🚀 Quick Start
 
-### 1. Get the template
+> **Pick your path:** download & paste into any AI, or use the full Git + VS Code workflow.
 
-**Option A — Download ZIP** (no git needed):
-Click **Code → Download ZIP** on the [repo page](https://github.com/MartinJuhler/Presentation-Template), unzip, and open the folder.
+---
 
-**Option B — Use this template** (recommended if you have git):
-Click **"Use this template"** on GitHub, give it a name, then clone:
+### 🟢 Path A — Simple (no git needed)
 
-```bash
-git clone https://github.com/YOUR-USERNAME/Presentations.git
-cd Presentations
-```
+1. **Download** — Click **Code → Download ZIP** on the [repo page](https://github.com/MartinJuhler/Presentation-Template) and unzip
+2. **Open the skill file** — Find `.agent/skills/SKILL.md` and copy its contents
+3. **Paste into any AI** — ChatGPT, Claude, Gemini, Copilot — whatever you use. Paste the skill file, then add your own content (meeting notes, bullet points, product specs)
+4. **Prompt** —
 
-### 2. Open in VS Code
+   ```
+   Using the design system I just shared, create three HTML presentations
+   about [your topic]: a one-pager, a 3-slide pitch, and a full 6-slide deck.
+   ```
 
-```bash
-code .
-```
+5. **Preview** — Save the generated HTML files into the project folder and open them in your browser. Done!
 
-Copilot automatically reads the `.agent/` folder for design rules and skills.
+---
 
-### 3. Paste your knowledge into AI
+### 🔵 Path B — Expert (Git + VS Code + Copilot)
 
-Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points, product specs. No formatting needed.
+1. **Use this template** — Click **"Use this template"** on GitHub, name your repo, then clone:
 
-### 4. Ask AI to build your slides
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/Presentations.git
+   cd Presentations && code .
+   ```
 
-```
-@workspace Read .agent/skills/SKILL.md for the design system.
-Based on the knowledge I just shared, create three presentations:
-a one-pager, a 3-slide pitch, and a full 6-slide deck about [your topic].
-```
+2. **Copilot reads the skill automatically** — The `.agent/` folder gives Copilot full context on the design system
+3. **Paste your knowledge** — Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points, product specs
+4. **Prompt** —
 
-### 5. Preview locally
+   ```
+   @workspace Read .agent/skills/SKILL.md for the design system.
+   Based on the knowledge I just shared, create three presentations:
+   a one-pager, a 3-slide pitch, and a full 6-slide deck about [your topic].
+   ```
 
-Open any HTML file directly in your browser — no build step, no server needed:
-
-```bash
-# Or use a local server:
-python -m http.server 8000    # Python
-npx serve .                   # Node.js
-```
-
-### 6. Deploy to GitHub Pages
-
-1. Go to your repo → **Settings** → **Pages**
-2. Source: **Deploy from a branch**
-3. Branch: `main` → `/ (root)`
-4. Your presentations are live at `https://YOUR-USERNAME.github.io/Presentations/`
+5. **Preview** — Open any HTML file directly in your browser — no build step needed
+6. **Deploy** — Push to `main` and enable **GitHub Pages** (Settings → Pages → branch `main` / root) — your presentations are live at `https://YOUR-USERNAME.github.io/Presentations/`
 
 ---
 
