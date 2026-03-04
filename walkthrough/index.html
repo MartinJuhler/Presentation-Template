@@ -107,10 +107,6 @@
             overflow: hidden;
         }
 
-        .step.hidden-step {
-            display: none !important;
-        }
-
         /* ========== BUZZWORD OVERLAY ========== */
         .buzzword {
             position: absolute;
@@ -329,62 +325,6 @@
             font-weight: 600;
         }
 
-        /* ========== PATH CHOOSER CARDS ========== */
-        .path-card {
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            flex: 1;
-            min-width: 240px;
-            max-width: 340px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .path-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .path-card.path-simple:hover,
-        .path-card.path-simple.selected {
-            border-color: var(--accent-green);
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
-        }
-
-        .path-card.path-expert:hover,
-        .path-card.path-expert.selected {
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
-        }
-
-        .path-card-emoji {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .path-card-title {
-            font-weight: 800;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .path-card-desc {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .path-card-steps {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
         /* ========== CARDS ========== */
         .cards-row {
             display: flex;
@@ -469,6 +409,19 @@
             font-size: 0.85em;
         }
 
+        /* ========== WARNING BANNER ========== */
+        .warning-banner {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-top: 1.25rem;
+            max-width: 650px;
+            font-size: 0.8rem;
+            color: var(--accent-amber);
+            line-height: 1.6;
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-height: 700px) {
             .step {
@@ -522,7 +475,7 @@
     </div>
 
     <!-- ==================== STEP 0: The Pain Point ==================== -->
-    <div class="step gradient-bg" data-path="both">
+    <div class="step gradient-bg">
         <div class="hero-glow" style="top: -200px; right: -100px; background: #ef4444;"></div>
         <div class="buzzword buzzword-red">⏰ 2 HOURS LEFT</div>
         <div class="step-label reveal" style="color: var(--accent-red);">THE PAIN POINT</div>
@@ -538,66 +491,52 @@
         <div class="step-number">00</div>
     </div>
 
-    <!-- ==================== PATH CHOOSER ==================== -->
-    <div class="step" data-path="both" id="pathChooser">
-        <div class="buzzword buzzword-purple">🎯 CHOOSE YOUR PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-purple);">GETTING STARTED</div>
-        <h1 class="step-title reveal">How do you want to work?</h1>
-        <p class="step-subtitle reveal">Pick the workflow that fits you. You can always switch later.</p>
-
-        <div class="cards-row reveal" style="--i: 2; max-width: 720px;">
-            <div class="path-card path-simple" onclick="choosePath('simple')">
-                <div class="path-card-emoji">🟢</div>
-                <div class="path-card-title">Simple</div>
-                <div class="path-card-desc">
-                    Download ZIP, open in VS Code, prompt Copilot, preview in browser. No git needed.
-                </div>
-                <div class="path-card-steps">4 STEPS · BEGINNER FRIENDLY</div>
-            </div>
-            <div class="path-card path-expert" onclick="choosePath('expert')">
-                <div class="path-card-emoji">🔵</div>
-                <div class="path-card-title">Expert</div>
-                <div class="path-card-desc">
-                    Git clone, MCP tools, GitHub CLI, deploy to GitHub Pages. Full version-controlled workflow.
-                </div>
-                <div class="path-card-steps">6 STEPS · POWER USER</div>
-            </div>
-        </div>
-        <div class="step-number">⚡</div>
-    </div>
-
-    <!-- ==================== SIMPLE 1: Download & Open ==================== -->
-    <div class="step" data-path="simple">
-        <div class="buzzword buzzword-green">🟢 SIMPLE PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-green);">STEP 1</div>
-        <h1 class="step-title reveal">Download & open in VS Code</h1>
+    <!-- ==================== STEP 1: Clone & Open ==================== -->
+    <div class="step">
+        <div class="buzzword buzzword-blue">🚀 GET STARTED</div>
+        <div class="step-label reveal" style="color: var(--accent-blue);">STEP 1</div>
+        <h1 class="step-title reveal">Use the template & open in VS Code</h1>
         <p class="step-subtitle reveal">
-            Go to the <a href="https://github.com/MartinJuhler/Presentation-Template" target="_blank"
-                style="color: var(--accent-blue);">GitHub repo</a>,
-            click <strong>Code → Download ZIP</strong>, unzip, and open the folder in VS Code.
+            Click <strong>"Use this template"</strong> on
+            <a href="https://github.com/MartinJuhler/Presentation-Template" target="_blank"
+                style="color: var(--accent-blue);">GitHub</a>
+            to create your own repo, then clone and open in VS Code.
         </p>
 
         <div class="code-block reveal" style="--i: 2;">
-            <span class="code-comment"># 1. Download ZIP from GitHub</span><br>
-            <span class="code-string">→ Click <strong>Code</strong> → <strong>Download ZIP</strong> →
-                unzip</span><br>
-            <br>
-            <span class="code-comment"># 2. Open in VS Code</span><br>
-            <span class="code-string">→ Right-click unzipped folder → "Open with Code"</span><br>
-            <br>
-            <span class="code-comment"># Copilot automatically reads the .agent/ skill file ✓</span>
+            <span class="code-comment"># Create your repo from the template on GitHub, then:</span><br>
+            <span class="code-prompt">$</span> <span class="code-command">git clone</span> <span
+                class="code-string">https://github.com/YOUR-NAME/my-presentations.git</span><br>
+            <span class="code-prompt">$</span> <span class="code-command">cd</span> <span
+                class="code-string">my-presentations</span><br>
+            <span class="code-prompt">$</span> <span class="code-command">code</span> <span class="code-string">.</span>
         </div>
+
+        <div class="file-tree reveal" style="--i: 3; margin-top: 1.5rem;">
+            <span class="folder">📁 my-presentations/</span><br>
+            &nbsp;&nbsp;├── <span class="folder">📁 akva-nautilus/</span> <span
+                style="color: var(--text-muted); font-size: 0.7rem;">← example to copy</span><br>
+            &nbsp;&nbsp;├── <span class="folder">📁 shared/</span> <span
+                style="color: var(--text-muted); font-size: 0.7rem;">← design system</span><br>
+            &nbsp;&nbsp;├── <span class="folder">📁 .agent/</span> <span
+                style="color: var(--text-muted); font-size: 0.7rem;">← AI skill file</span><br>
+            &nbsp;&nbsp;└── <span class="file">index.html</span>
+        </div>
+
+        <p class="reveal" style="--i: 4; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
+            💡 Copilot automatically reads the <code>.agent/</code> skill file — no setup needed.
+        </p>
         <div class="step-number">01</div>
     </div>
 
-    <!-- ==================== SIMPLE 2: Prompt Copilot ==================== -->
-    <div class="step" data-path="simple">
-        <div class="buzzword buzzword-green">🟢 SIMPLE PATH</div>
+    <!-- ==================== STEP 2: Prompt Copilot ==================== -->
+    <div class="step">
+        <div class="buzzword buzzword-green">🤖 AI MAGIC</div>
         <div class="step-label reveal" style="color: var(--accent-green);">STEP 2</div>
-        <h1 class="step-title reveal">Prompt Copilot</h1>
+        <h1 class="step-title reveal">Paste your knowledge & prompt</h1>
         <p class="step-subtitle reveal">
-            Open Copilot Chat, paste your content (meeting notes, bullet points, specs), then ask it to build your
-            slides.
+            Open Copilot Chat, paste your content (meeting notes, bullet points, specs, URLs), then ask it to
+            build your slides.
         </p>
 
         <div class="mockup-browser reveal" style="--i: 2;">
@@ -626,17 +565,21 @@
                 </div>
             </div>
         </div>
+
+        <p class="reveal" style="--i: 3; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
+            💡 Just paste raw notes, URLs, or key points. The AI does the research and structuring.
+        </p>
         <div class="step-number">02</div>
     </div>
 
-    <!-- ==================== SIMPLE 3: Save & Preview ==================== -->
-    <div class="step" data-path="simple">
-        <div class="buzzword buzzword-green">🟢 SIMPLE PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-green);">STEP 3</div>
-        <h1 class="step-title reveal">Save & preview</h1>
+    <!-- ==================== STEP 3: Preview & Edit ==================== -->
+    <div class="step">
+        <div class="buzzword buzzword-blue">👀 INSTANT PREVIEW</div>
+        <div class="step-label reveal" style="color: var(--accent-blue);">STEP 3</div>
+        <h1 class="step-title reveal">Preview, edit & save</h1>
         <p class="step-subtitle reveal">
-            Save the generated HTML files into a new project folder (e.g. <code>my-project/</code>).
-            Then open <code>index.html</code> in your browser to see the dashboard with all your presentations.
+            Open <code>index.html</code> in your browser to see all presentations.
+            Click <strong>⚡ Edit</strong> on any slide to make changes, then <strong>💾 Save</strong> to push to GitHub.
         </p>
 
         <div class="mockup-browser reveal" style="--i: 2;">
@@ -660,13 +603,15 @@
         </div>
 
         <p class="reveal" style="--i: 3; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
-            💡 Bookmark <code>index.html</code> for instant one-click access. Works offline, no server needed.
+            💡 Bookmark <code>index.html</code> for instant one-click access. First save will prompt for a
+            <a href="https://github.com/settings/tokens" target="_blank" style="color: var(--accent-blue);">GitHub PAT</a>
+            — it's stored locally in your browser.
         </p>
         <div class="step-number">03</div>
     </div>
 
-    <!-- ==================== SIMPLE 4: Done / Results ==================== -->
-    <div class="step gradient-bg" data-path="simple">
+    <!-- ==================== STEP 4: Done / Results ==================== -->
+    <div class="step gradient-bg">
         <div class="hero-glow" style="bottom: -200px; left: -100px; background: #10b981;"></div>
         <div class="buzzword buzzword-green">✨ THREE FORMATS</div>
         <div class="step-label reveal" style="color: var(--accent-green);">DONE!</div>
@@ -700,45 +645,14 @@
         <div class="step-number">04</div>
     </div>
 
-    <!-- ==================== EXPERT 1: Clone & Setup ==================== -->
-    <div class="step" data-path="expert">
-        <div class="buzzword buzzword-blue">🔵 EXPERT PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-blue);">STEP 1</div>
-        <h1 class="step-title reveal">Use the template & clone</h1>
-        <p class="step-subtitle reveal">
-            Click <strong>"Use this template"</strong> on GitHub to create your own repo, then clone and open in VS
-            Code.
-        </p>
-
-        <div class="code-block reveal" style="--i: 2;">
-            <span class="code-comment"># Create your repo from the template on GitHub, then:</span><br>
-            <span class="code-prompt">$</span> <span class="code-command">git clone</span> <span
-                class="code-string">https://github.com/YOUR-NAME/my-presentations.git</span><br>
-            <span class="code-prompt">$</span> <span class="code-command">cd</span> <span
-                class="code-string">my-presentations</span><br>
-            <span class="code-prompt">$</span> <span class="code-command">code</span> <span class="code-string">.</span>
-        </div>
-
-        <div class="file-tree reveal" style="--i: 3; margin-top: 1.5rem;">
-            <span class="folder">📁 my-presentations/</span><br>
-            &nbsp;&nbsp;├── <span class="folder">📁 akva-nautilus/</span> <span
-                style="color: var(--text-muted); font-size: 0.7rem;">← example to copy</span><br>
-            &nbsp;&nbsp;├── <span class="folder">📁 shared/</span> <span
-                style="color: var(--text-muted); font-size: 0.7rem;">← design system</span><br>
-            &nbsp;&nbsp;├── <span class="folder">📁 .agent/</span> <span
-                style="color: var(--text-muted); font-size: 0.7rem;">← AI skill file</span><br>
-            &nbsp;&nbsp;└── <span class="file">index.html</span>
-        </div>
-        <div class="step-number">01</div>
-    </div>
-
-    <!-- ==================== EXPERT 2: MCP & CLI Setup ==================== -->
-    <div class="step" data-path="expert">
-        <div class="buzzword buzzword-blue">🔵 EXPERT PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-purple);">STEP 2</div>
+    <!-- ==================== OPTIONAL: MCP & CLI ==================== -->
+    <div class="step">
+        <div class="buzzword buzzword-purple">⚡ OPTIONAL</div>
+        <div class="step-label reveal" style="color: var(--accent-purple);">ADD-ON</div>
         <h1 class="step-title reveal">Supercharge with MCP & CLI</h1>
         <p class="step-subtitle reveal">
-            Give Copilot direct access to your tools. Ask it to configure MCP servers or use the GitHub CLI.
+            Give Copilot direct access to your tools. Ask it to configure MCP servers for GitHub, Git,
+            and more — so it can create branches, commit, push, and manage repos from chat.
         </p>
 
         <div class="mockup-browser reveal" style="--i: 2;">
@@ -774,135 +688,26 @@
             💡 With MCP, Copilot can directly create repos, push commits, open PRs, and enable GitHub Pages — all from
             chat.
         </p>
-        <div class="step-number">02</div>
+        <div class="step-number">⚡</div>
     </div>
 
-    <!-- ==================== EXPERT 3: Paste Knowledge ==================== -->
-    <div class="step" data-path="expert">
-        <div class="buzzword buzzword-blue">🔵 EXPERT PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-amber);">STEP 3</div>
-        <h1 class="step-title reveal">Add your knowledge</h1>
+    <!-- ==================== OPTIONAL: GitHub Pages ==================== -->
+    <div class="step">
+        <div class="buzzword buzzword-amber">⚠️ OPTIONAL</div>
+        <div class="step-label reveal" style="color: var(--accent-amber);">ADD-ON</div>
+        <h1 class="step-title reveal">Share publicly with GitHub Pages</h1>
         <p class="step-subtitle reveal">
-            Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points,
-            product specs. No formatting needed. The AI reads it all.
+            Enable GitHub Pages and your presentations get a live URL anyone can access.
+            No hosting needed — GitHub does it for you.
         </p>
 
-        <div class="mockup-browser reveal" style="--i: 2;">
-            <div class="mockup-toolbar">
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-                <div class="mockup-url">Copilot Chat</div>
-            </div>
-            <div class="mockup-content" style="font-size: 0.8rem;">
-                <div style="display: flex; gap: 8px; align-items: flex-start;">
-                    <span
-                        style="background: var(--accent-blue); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; white-space: nowrap;">YOU</span>
-                    <span style="color: var(--text-secondary); line-height: 1.5;">Here's what I know about our Nautilus
-                        submersible pen system:<br><br>
-                        - World's first commercial submersible pen<br>
-                        - 50% fewer sea lice incidents<br>
-                        - Withstands Hs 3m waves during submersion<br>
-                        - Used by Nordlaks at Håbranden since 2024<br>
-                        - Check https://akvagroup.com/cage-farming/nautilus for more details
-                    </span>
-                </div>
-            </div>
-        </div>
-
-        <p class="reveal" style="--i: 3; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
-            💡 Just paste raw notes, URLs, or key points. The AI does the research and structuring.
-        </p>
-        <div class="step-number">03</div>
-    </div>
-
-    <!-- ==================== EXPERT 4: AI Generates ==================== -->
-    <div class="step" data-path="expert">
-        <div class="buzzword buzzword-blue">🔵 EXPERT PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-green);">STEP 4</div>
-        <h1 class="step-title reveal">AI builds your slides</h1>
-        <p class="step-subtitle reveal">
-            One prompt. Three polished presentation formats. The AI uses the design system automatically.
-        </p>
-
-        <div class="mockup-browser reveal" style="--i: 2;">
-            <div class="mockup-toolbar">
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-                <div class="mockup-url">Copilot Chat</div>
-            </div>
-            <div class="mockup-content" style="font-size: 0.8rem;">
-                <div style="display: flex; gap: 8px; align-items: flex-start; margin-bottom: 1rem;">
-                    <span
-                        style="background: var(--accent-blue); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; white-space: nowrap;">YOU</span>
-                    <span style="color: var(--text-secondary); line-height: 1.5;">@workspace Read .agent/skills/SKILL.md
-                        for the design system. Based on the knowledge I just shared, create three presentations: a
-                        one-pager, a 3-slide pitch, and a full 6-slide deck about AKVA's Nautilus deep farming
-                        solution.</span>
-                </div>
-                <div style="display: flex; gap: 8px; align-items: flex-start;">
-                    <span
-                        style="background: var(--accent-green); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; white-space: nowrap;">AI</span>
-                    <span style="color: var(--accent-green); line-height: 1.5;">I'll create all three formats using the
-                        dark design system. Creating onepager.html, presentation-short.html, and
-                        presentation.html...</span>
-                </div>
-            </div>
-        </div>
-        <div class="step-number">04</div>
-    </div>
-
-    <!-- ==================== EXPERT 5: Preview ==================== -->
-    <div class="step" data-path="expert">
-        <div class="buzzword buzzword-blue">🔵 EXPERT PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-blue);">STEP 5</div>
-        <h1 class="step-title reveal">Preview & iterate</h1>
-        <p class="step-subtitle reveal">
-            Open the HTML files in your browser. Tweak, re-prompt, iterate. Once happy, commit and push.
-        </p>
-
-        <div class="mockup-browser reveal" style="--i: 2;">
-            <div class="mockup-toolbar">
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-                <div class="mockup-dot"></div>
-                <div class="mockup-url">file:///c:/Users/you/my-presentations/akva-nautilus/presentation.html</div>
-            </div>
-            <div class="mockup-content"
-                style="background: linear-gradient(135deg, #0a0e1a, #111827); padding: 1.5rem; text-align: center;">
-                <div
-                    style="font-size: 0.6rem; font-weight: 600; letter-spacing: 2px; color: var(--accent-blue); text-transform: uppercase;">
-                    AKVA GROUP — DEEP FARMING</div>
-                <div
-                    style="font-size: 1.2rem; font-weight: 800; margin: 0.5rem 0; background: linear-gradient(135deg, #f1f5f9, #94a3b8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                    Nautilus Submersible Aquaculture</div>
-                <div style="font-size: 0.7rem; color: var(--text-secondary);">The world's first commercial submersible
-                    pen system</div>
-            </div>
+        <div class="warning-banner reveal" style="--i: 2;">
+            ⚠️ <strong>Warning:</strong> GitHub Pages makes your repository content <strong>publicly visible</strong>.
+            Only enable this if you're comfortable with anyone on the internet seeing your presentations.
+            For private sharing, just open <code>index.html</code> locally — it works perfectly without Pages.
         </div>
 
         <div class="code-block reveal" style="--i: 3;">
-            <span class="code-comment"># Happy? Commit and push</span><br>
-            <span class="code-prompt">$</span> <span class="code-command">git add</span> <span
-                class="code-string">.</span><br>
-            <span class="code-prompt">$</span> <span class="code-command">git commit</span> <span class="code-string">-m
-                "Add nautilus presentations"</span><br>
-            <span class="code-prompt">$</span> <span class="code-command">git push</span>
-        </div>
-        <div class="step-number">05</div>
-    </div>
-
-    <!-- ==================== EXPERT 6: Deploy ==================== -->
-    <div class="step" data-path="expert">
-        <div class="buzzword buzzword-blue">🔵 EXPERT PATH</div>
-        <div class="step-label reveal" style="color: var(--accent-green);">STEP 6</div>
-        <h1 class="step-title reveal">Deploy to GitHub Pages</h1>
-        <p class="step-subtitle reveal">
-            Enable GitHub Pages and your presentations are live. Share the link with anyone — no hosting needed.
-        </p>
-
-        <div class="code-block reveal" style="--i: 2;">
             <span class="code-comment"># Ask Copilot to do it for you:</span><br>
             <span class="code-string">"Enable GitHub Pages on my repo, deploy from main branch"</span><br>
             <br>
@@ -913,34 +718,16 @@
             <span class="code-prompt">🌐</span> <span
                 class="code-string">https://YOUR-NAME.github.io/my-presentations/</span>
         </div>
-
-        <div class="cards-row reveal" style="--i: 3;">
-            <a href="../akva-nautilus/onepager.html" class="mini-card">
-                <div class="mini-card-icon">📄</div>
-                <div class="mini-card-title">One-Pager</div>
-                <div class="mini-card-desc">Executive summary. Print-ready A4.</div>
-            </a>
-            <a href="../akva-nautilus/presentation-short.html" class="mini-card">
-                <div class="mini-card-icon">⚡</div>
-                <div class="mini-card-title">3-Slide Pitch</div>
-                <div class="mini-card-desc">Problem → Solution → Results.</div>
-            </a>
-            <a href="../akva-nautilus/presentation.html" class="mini-card">
-                <div class="mini-card-icon">🎯</div>
-                <div class="mini-card-title">Full Deck</div>
-                <div class="mini-card-desc">6 slides. Full deep-dive.</div>
-            </a>
-        </div>
-        <div class="step-number">06</div>
+        <div class="step-number">🌐</div>
     </div>
 
     <!-- ==================== CTA: Get Started ==================== -->
-    <div class="step gradient-bg" data-path="both" style="text-align: center; align-items: center;">
+    <div class="step gradient-bg" style="text-align: center; align-items: center;">
         <div class="hero-glow" style="top: -150px; left: 50%; transform: translateX(-50%); background: #8b5cf6;"></div>
         <div class="step-label reveal" style="color: var(--accent-purple);">YOUR TURN</div>
         <h1 class="step-title reveal" style="max-width: 700px;">Ready to stop fighting PowerPoint?</h1>
         <p class="step-subtitle reveal" style="text-align: center; max-width: 500px;">
-            The template is open source and free. Download it, paste your knowledge,
+            The template is open source and free. Clone it, paste your knowledge,
             and let AI do the design work.
         </p>
 
@@ -952,117 +739,54 @@
         <p class="reveal" style="--i: 4; margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-muted);">
             MIT Licensed · No build tools · No dependencies · Works offline
         </p>
-
-        <button class="reveal" onclick="choosePath(null)"
-            style="--i: 5; margin-top: 1rem; background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 8px 20px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; font-family: inherit;">
-            ← Switch path (Simple / Expert)
-        </button>
         <div class="step-number">🚀</div>
     </div>
 
 
     <script>
-        /* ========== Path Chooser Logic ========== */
-        let currentPath = null;
-
-        function choosePath(path) {
-            currentPath = path;
-            const allSteps = document.querySelectorAll('.step');
-
-            allSteps.forEach(step => {
-                const stepPath = step.dataset.path;
-                if (!stepPath || stepPath === 'both') {
-                    step.classList.remove('hidden-step');
-                } else if (path === null) {
-                    // Reset — go back to chooser, hide path-specific
-                    step.classList.add('hidden-step');
-                } else if (stepPath === path) {
-                    step.classList.remove('hidden-step');
-                } else {
-                    step.classList.add('hidden-step');
-                }
-            });
-
-            // Highlight selected card
-            document.querySelectorAll('.path-card').forEach(c => c.classList.remove('selected'));
-            if (path) {
-                const card = document.querySelector(`.path-card.path-${path}`);
-                if (card) card.classList.add('selected');
-            }
-
-            // Rebuild nav pips
-            rebuildNav();
-
-            // Scroll to next step after chooser
-            if (path) {
-                const visibleSteps = getVisibleSteps();
-                const chooserIdx = visibleSteps.indexOf(document.getElementById('pathChooser'));
-                if (chooserIdx >= 0 && chooserIdx + 1 < visibleSteps.length) {
-                    setTimeout(() => visibleSteps[chooserIdx + 1].scrollIntoView({ behavior: 'smooth' }), 200);
-                }
-            } else {
-                // Scroll back to chooser
-                document.getElementById('pathChooser').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function getVisibleSteps() {
-            return [...document.querySelectorAll('.step:not(.hidden-step)')];
-        }
-
         /* ========== Scroll Observer for reveal + nav ========== */
-        function rebuildNav() {
-            const navProgress = document.getElementById('navProgress');
-            navProgress.innerHTML = '';
+        const steps = document.querySelectorAll('.step');
+        const navProgress = document.getElementById('navProgress');
+        const navCounter = document.getElementById('navCounter');
 
-            const visibleSteps = getVisibleSteps();
-            visibleSteps.forEach((_, i) => {
-                const pip = document.createElement('button');
-                pip.className = 'nav-pip';
-                pip.addEventListener('click', () => visibleSteps[i].scrollIntoView({ behavior: 'smooth' }));
-                navProgress.appendChild(pip);
+        // Build nav pips
+        steps.forEach((_, i) => {
+            const pip = document.createElement('button');
+            pip.className = 'nav-pip';
+            pip.addEventListener('click', () => steps[i].scrollIntoView({ behavior: 'smooth' }));
+            navProgress.appendChild(pip);
+        });
+
+        const pips = navProgress.querySelectorAll('.nav-pip');
+        let currentIdx = 0;
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const idx = [...steps].indexOf(entry.target);
+                    pips.forEach((p, i) => p.classList.toggle('active', i === idx));
+                    navCounter.textContent = `${idx + 1} / ${steps.length}`;
+                    currentIdx = idx;
+                }
             });
+        }, { threshold: 0.45 });
 
-            // Re-observe
-            if (window._observer) window._observer.disconnect();
-
-            const pips = navProgress.querySelectorAll('.nav-pip');
-            const navCounter = document.getElementById('navCounter');
-
-            window._observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        const vs = getVisibleSteps();
-                        const idx = vs.indexOf(entry.target);
-                        pips.forEach((p, i) => p.classList.toggle('active', i === idx));
-                        navCounter.textContent = `${idx + 1} / ${vs.length}`;
-                        window._currentIdx = idx;
-                    }
-                });
-            }, { threshold: 0.45 });
-
-            visibleSteps.forEach(s => window._observer.observe(s));
-        }
-
-        // Initialize: hide path-specific steps, show only 'both'
-        choosePath(null);
+        steps.forEach(s => observer.observe(s));
 
         /* ========== Keyboard nav ========== */
-        window._currentIdx = 0;
         document.addEventListener('keydown', e => {
-            const vs = getVisibleSteps();
-            let idx = window._currentIdx || 0;
+            let idx = currentIdx;
             if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
                 e.preventDefault();
-                idx = Math.min(idx + 1, vs.length - 1);
-                vs[idx].scrollIntoView({ behavior: 'smooth' });
+                idx = Math.min(idx + 1, steps.length - 1);
+                steps[idx].scrollIntoView({ behavior: 'smooth' });
             } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
                 e.preventDefault();
                 idx = Math.max(idx - 1, 0);
-                vs[idx].scrollIntoView({ behavior: 'smooth' });
+                steps[idx].scrollIntoView({ behavior: 'smooth' });
             }
-            window._currentIdx = idx;
+            currentIdx = idx;
         });
     </script>
 </body>
