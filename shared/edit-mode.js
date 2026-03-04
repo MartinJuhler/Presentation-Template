@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
    Edit Mode — In-browser content editing
-   with direct save-to-GitHub via Contents API
+   Save to GitHub via Contents API or download locally
    ═══════════════════════════════════════════════ */
 
 (function () {
@@ -71,15 +71,35 @@
 
     function promptForToken() {
         const token = prompt(
-            'Enter your GitHub Personal Access Token (PAT).\n' +
-            'It needs "repo" or "contents:write" scope.\n' +
-            'This will be stored in localStorage for future saves.'
+            'Enter your GitHub Personal Access Token (PAT) to save directly to GitHub.\n' +
+            'It needs "repo" or "contents:write" scope.\n\n' +
+            'Press Cancel to save locally as a file download instead.'
         );
         if (token && token.trim()) {
             localStorage.setItem('gh-pat', token.trim());
             return token.trim();
         }
         return null;
+    }
+
+    // ── Save locally (download) ──
+    function downloadLocally() {
+        try {
+            const htmlContent = getCleanHTML();
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = getFileName();
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('✅ Saved locally!', 'success');
+        } catch (error) {
+            console.error('Download failed:', error);
+            showToast(`❌ ${error.message}`, 'error', 5000);
+        }
     }
 
     // ── Determine file path from meta tag or URL ──
@@ -96,6 +116,37 @@
             return parts.slice(1).join('/') || 'index.html';
         }
         return parts.join('/') || 'index.html';
+    }
+
+    // ── Build clean HTML from current DOM state ──
+    function getCleanHTML() {
+        const clone = document.documentElement.cloneNode(true);
+
+        // Remove edit-mode injected elements
+        clone.querySelectorAll('.edit-toolbar, .edit-toast').forEach(el => el.remove());
+
+        // Remove contenteditable attributes
+        clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+        // Remove edit-active class from body
+        const cloneBody = clone.querySelector('body');
+        if (cloneBody) cloneBody.classList.remove('edit-active');
+
+        // Remove browser-injected data attributes
+        clone.getAttributeNames()
+            .filter(attr => attr.startsWith('data-'))
+            .forEach(attr => clone.removeAttribute(attr));
+
+        return '<!DOCTYPE html>\n' + clone.outerHTML;
+    }
+
+    // ── Get filename for download ──
+    function getFileName() {
+        const filePath = getFilePath();
+        if (filePath) return filePath.split('/').pop();
+        // Fallback: derive from URL
+        const urlParts = window.location.pathname.split('/').filter(Boolean);
+        return urlParts.pop() || 'presentation.html';
     }
 
     // ── Toggle edit mode ──
@@ -127,13 +178,14 @@
         }
     });
 
-    // ── Save to GitHub ──
+    // ── Save (GitHub with local fallback) ──
     saveBtn.addEventListener('click', async () => {
         let token = getToken();
         if (!token) {
             token = promptForToken();
             if (!token) {
-                showToast('Save cancelled — no token provided', 'error');
+                // No PAT provided — fall back to local download
+                downloadLocally();
                 return;
             }
         }
@@ -144,31 +196,12 @@
             return;
         }
 
-        showToast('Saving...', 'info', 10000);
+        showToast('Saving to GitHub...', 'info', 10000);
         saveBtn.disabled = true;
         saveBtn.textContent = '⏳ Saving...';
 
         try {
-            // Clone the entire document to avoid mutating the live DOM
-            const clone = document.documentElement.cloneNode(true);
-
-            // Remove edit-mode injected elements from the clone
-            clone.querySelectorAll('.edit-toolbar, .edit-toast').forEach(el => el.remove());
-
-            // Remove contenteditable attributes
-            clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-
-            // Remove edit-active class from body
-            const cloneBody = clone.querySelector('body');
-            if (cloneBody) cloneBody.classList.remove('edit-active');
-
-            // Remove browser-injected attributes (e.g. data-jetski-tab-id, data-grammarly-*, etc.)
-            clone.getAttributeNames()
-                .filter(attr => attr.startsWith('data-'))
-                .forEach(attr => clone.removeAttribute(attr));
-
-            // Get the clean HTML content from the clone
-            const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+            const htmlContent = getCleanHTML();
 
             // GitHub API: Get current file SHA
             const apiBase = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}`;
