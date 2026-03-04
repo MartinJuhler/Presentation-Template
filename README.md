@@ -2,7 +2,7 @@
 
 **An open-source framework for building beautiful, AI-powered HTML presentations.**
 
-Create stunning slide decks, executive summaries, and one-pagers using pure HTML and CSS — then host them for free on GitHub Pages. Designed to work seamlessly with AI coding assistants (Cursor, Windsurf, Antigravity, Copilot) via built-in agent rules, skills, and workflows.
+Create stunning slide decks, executive summaries, and one-pagers using pure HTML and CSS. Designed to work seamlessly with AI coding assistants (Cursor, Windsurf, Antigravity, Copilot) via built-in agent rules, skills, and workflows.
 
 ---
 
@@ -19,25 +19,26 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
 | 🎨 **Dark theme design system** | Premium color tokens, responsive typography with `clamp()`, and glassmorphism cards |
 | 🔄 **Scroll-snap slides** | Full-viewport slides with smooth snap-to scrolling |
 | ✨ **Reveal animations** | Top-to-bottom staggered fade-in on scroll (configurable speed and style) |
-| ✏️ **Edit mode** | Press `E` to toggle inline editing — make quick text changes right in the browser |
+| ✏️ **Edit mode** | Click ⚡ Edit to change text inline, then 💾 Save directly to GitHub |
 | 🧭 **Auto navigation** | Dot indicators + slide counter generated automatically from your slides |
 | 📄 **One-pager template** | A4 print-optimized layout for executive one-pagers |
 | 🤖 **AI coding agent skills** | Pre-built rules, skills, and workflows for AI assistants |
-| 🌐 **Zero dependencies** | No build step. Pure HTML/CSS/JS. Deploy anywhere. |
+| 🌐 **Zero dependencies** | No build step. Pure HTML/CSS/JS. Open locally or deploy anywhere. |
 
 ---
 
 ## 🚀 Quick Start
 
-> **Pick your path:** download & paste into any AI, or use the full Git + VS Code workflow.
+> **Pick your path:** a simple AI-only workflow, or the full Git + VS Code setup.
 
 ---
 
-### 🟢 Path A — Simple (no git needed)
+### 🟢 Path A — Simple (AI + GitHub)
 
-1. **Download** — Click **Code → Download ZIP** on the [repo page](https://github.com/MartinJuhler/Presentation-Template) and unzip
-2. **Open in VS Code** — Open the unzipped folder in VS Code. Copilot automatically reads the `.agent/` skill file
-3. **Prompt** — Open Copilot Chat, paste your content (meeting notes, bullet points, specs), then:
+1. **Use this template** — Click **"Use this template"** on GitHub to create your own repo
+2. **Clone** — Download or clone your new repo to your computer
+3. **Open in VS Code** — Copilot automatically reads the `.agent/` skill file
+4. **Prompt** — Open Copilot Chat, paste your content (meeting notes, bullet points, specs), then:
 
    ```
    @workspace Read .agent/skills/SKILL.md for the design system.
@@ -45,7 +46,8 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
    a one-pager, a 3-slide pitch, and a full 6-slide deck.
    ```
 
-4. **Save & Preview** — Save the generated HTML files into the project folder, then open `index.html` in your browser. Done!
+5. **Preview** — Open any HTML file directly in your browser — bookmark `index.html` for easy access
+6. **Edit & Save** — Click ⚡ Edit on any presentation to make changes, then 💾 Save to push to GitHub (see [PAT Setup](#-pat-setup-one-time) below)
 
 ---
 
@@ -79,7 +81,40 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
    ```
 
 6. **Preview** — Open any HTML file directly in your browser — no build step needed
-7. **Deploy** — Push to `main` and enable **GitHub Pages** (Settings → Pages → branch `main` / root) — your presentations are live at `https://YOUR-USERNAME.github.io/Presentations/`
+
+---
+
+## 🔑 PAT Setup (One-Time)
+
+To save edits from the browser, you need a GitHub Personal Access Token (PAT) with `contents:write` scope. You only set this up once — the token is stored in your browser's `localStorage`.
+
+### Option A — Ask your AI assistant
+
+> *"Create a GitHub fine-grained PAT with contents:write scope for my Presentations repo and walk me through the steps"*
+
+### Option B — Manual setup
+
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens?type=beta)
+2. Click **Generate new token** (fine-grained)
+3. Set **Repository access** → Select your presentations repo
+4. Under **Permissions → Contents**, select **Read and write**
+5. Generate and paste the token when prompted in the browser
+
+### 🔄 Syncing changes
+
+After saving via the browser, run `git pull` to update your local files.
+
+---
+
+## 🌐 Public Sharing (Optional)
+
+> ⚠️ **Warning**: Enabling GitHub Pages makes your presentations **publicly accessible to anyone with the URL**. Only do this if you want your presentations to be public.
+
+If you want a shareable live URL:
+
+1. Go to your repo **Settings → Pages**
+2. Set branch to `main`, folder to `/ (root)`
+3. Your presentations will be live at `https://YOUR-USERNAME.github.io/Presentations/`
 
 ---
 
@@ -91,7 +126,7 @@ Presentations/
 │   ├── styles.css             # Design system: tokens, layouts, animations
 │   ├── nav.js                 # Scroll navigation + reveal animation engine
 │   ├── edit-mode.css          # Edit mode styles
-│   └── edit-mode.js           # Press E to edit text inline
+│   └── edit-mode.js           # In-browser editing + GitHub save
 │
 ├── akva-nautilus/             # ← Live example — copy this to start your own
 │   ├── presentation.html      # Full 6-slide deck
@@ -190,17 +225,17 @@ Click the **⚡ Edit** button on any presentation to toggle inline editing:
 
 - All text elements become editable — click and type to change content
 - Click **💾 Save** to commit changes directly to your GitHub repo
-- Your first save will ask for a GitHub Personal Access Token (PAT) with `contents:write` scope
-- The token is stored in `localStorage` for future saves
+- Your first save will ask for a GitHub PAT ([see setup above](#-pat-setup-one-time))
+- The token is stored in `localStorage` — you only enter it once
 
-**Repo auto-detection**: On GitHub Pages, the repo owner and name are auto-detected from the URL. For custom hosting, add meta tags to your HTML `<head>`:
+**Don't have a PAT yet?** The save prompt includes an AI prompt you can copy-paste to have your AI assistant create one for you.
+
+**Repo auto-detection**: For custom hosting, add meta tags to your HTML `<head>`:
 
 ```html
 <meta name="gh-owner" content="YOUR-USERNAME">
 <meta name="gh-repo" content="YOUR-REPO-NAME">
 ```
-
-This lets you make quick edits and polish directly in the browser, with changes saved back to GitHub.
 
 ---
 
