@@ -29,16 +29,16 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
 
 ## 🚀 Quick Start
 
-> **Pick your path:** a simple AI-only workflow, or the full Git + VS Code setup.
+1. **Use this template** — Click **"Use this template"** on GitHub, name your repo, then clone:
 
----
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/Presentations.git
+   cd Presentations && code .
+   ```
 
-### 🟢 Path A — Simple (AI + GitHub)
-
-1. **Use this template** — Click **"Use this template"** on GitHub to create your own repo
-2. **Clone** — Download or clone your new repo to your computer
-3. **Open in VS Code** — Copilot automatically reads the `.agent/` skill file
-4. **Prompt** — Open Copilot Chat, paste your content (meeting notes, bullet points, specs), then:
+2. **Open in VS Code** — Copilot automatically reads the `.agent/` skill file
+3. **Paste your content** — Open Copilot Chat and paste whatever you have — meeting notes, URLs, bullet points, product specs
+4. **Prompt** —
 
    ```
    @workspace Read .agent/skills/SKILL.md for the design system.
@@ -47,40 +47,19 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
    ```
 
 5. **Preview** — Open any HTML file directly in your browser — bookmark `index.html` for easy access
-6. **Edit & Save** — Click ⚡ Edit on any presentation to make changes, then 💾 Save to push to GitHub (see [PAT Setup](#-pat-setup-one-time) below)
+6. **Edit & Save** — Click ⚡ Edit on any presentation to make quick changes, then 💾 Save to push to GitHub (see [PAT Setup](#-pat-setup-one-time) below)
 
----
+### 🔌 Add-on: Supercharge with MCP *(optional)*
 
-### 🔵 Path B — Expert (Git + VS Code + Copilot)
+Give your AI assistant direct access to your tools and note-taking apps via [MCP](https://modelcontextprotocol.io/):
 
-1. **Use this template** — Click **"Use this template"** on GitHub, name your repo, then clone:
+```
+# Ask your AI assistant to configure MCP:
+"Set up MCP access for this project — GitHub MCP server
+ for repo operations. Configure .vscode/mcp.json if needed."
+```
 
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/Presentations.git
-   cd Presentations && code .
-   ```
-
-2. **Copilot reads the skill automatically** — The `.agent/` folder gives Copilot full context on the design system
-3. **Supercharge with MCP & CLI** *(optional)* — Give Copilot direct access to your tools:
-
-   ```
-   # Ask Copilot to configure MCP for you:
-   "Set up MCP access for this project — GitHub MCP server
-    for repo operations. Configure .vscode/mcp.json if needed."
-   ```
-
-   With MCP enabled, Copilot can create branches, commit, push, and deploy — all from chat. You can also install the [GitHub CLI](https://cli.github.com/) (`gh`) for terminal-based repo management.
-
-4. **Paste your knowledge** — Open Copilot Chat and paste in whatever you have — meeting notes, URLs, bullet points, product specs
-5. **Prompt** —
-
-   ```
-   @workspace Read .agent/skills/SKILL.md for the design system.
-   Based on the knowledge I just shared, create three presentations:
-   a one-pager, a 3-slide pitch, and a full 6-slide deck about [your topic].
-   ```
-
-6. **Preview** — Open any HTML file directly in your browser — no build step needed
+With MCP enabled, your AI can create branches, commit, push, and deploy — all from chat. It can also read your OneNote, Notion, or Obsidian notes and turn them into presentations automatically.
 
 ---
 
@@ -99,10 +78,6 @@ To save edits from the browser, you need a GitHub Personal Access Token (PAT) wi
 3. Set **Repository access** → Select your presentations repo
 4. Under **Permissions → Contents**, select **Read and write**
 5. Generate and paste the token when prompted in the browser
-
-### 🔄 Syncing changes
-
-After saving via the browser, run `git pull` to update your local files.
 
 ---
 
@@ -239,7 +214,7 @@ Click the **⚡ Edit** button on any presentation to toggle inline editing:
 
 ---
 
-## 🤖 Supercharge with AI + MCP
+## 🤖 AI + MCP Power Tips
 
 This framework is designed to be **most powerful when paired with an AI coding assistant** that has access to note-taking tools via MCP (Model Context Protocol).
 
