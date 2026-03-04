@@ -52,6 +52,7 @@
             z-index: 100;
             background: rgba(10, 14, 26, 0.9);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             padding: 0 2rem;
             display: flex;
@@ -495,10 +496,10 @@
     <div class="step">
         <div class="buzzword buzzword-blue">🚀 GET STARTED</div>
         <div class="step-label reveal" style="color: var(--accent-blue);">STEP 1</div>
-        <h1 class="step-title reveal">Use the template & open in VS Code</h1>
+        <h1 class="step-title reveal">Use the template &amp; open in VS Code</h1>
         <p class="step-subtitle reveal">
             Click <strong>"Use this template"</strong> on
-            <a href="https://github.com/MartinJuhler/Presentation-Template" target="_blank"
+            <a href="https://github.com/MartinJuhler/Presentation-Template" target="_blank" rel="noopener"
                 style="color: var(--accent-blue);">GitHub</a>
             to create your own repo, then clone and open in VS Code.
         </p>
@@ -533,7 +534,7 @@
     <div class="step">
         <div class="buzzword buzzword-green">🤖 AI MAGIC</div>
         <div class="step-label reveal" style="color: var(--accent-green);">STEP 2</div>
-        <h1 class="step-title reveal">Paste your knowledge & prompt</h1>
+        <h1 class="step-title reveal">Paste your knowledge &amp; prompt</h1>
         <p class="step-subtitle reveal">
             Open Copilot Chat, paste your content (meeting notes, bullet points, specs, URLs), then ask it to
             build your slides.
@@ -576,10 +577,10 @@
     <div class="step">
         <div class="buzzword buzzword-blue">👀 INSTANT PREVIEW</div>
         <div class="step-label reveal" style="color: var(--accent-blue);">STEP 3</div>
-        <h1 class="step-title reveal">Preview, edit & save</h1>
+        <h1 class="step-title reveal">Preview &amp; edit in your browser</h1>
         <p class="step-subtitle reveal">
             Open <code>index.html</code> in your browser to see all presentations.
-            Click <strong>⚡ Edit</strong> on any slide to make changes, then <strong>💾 Save</strong> to push to GitHub.
+            Click <strong>⚡ Edit</strong> on any slide to tweak text, data, or layout — right in the browser.
         </p>
 
         <div class="mockup-browser reveal" style="--i: 2;">
@@ -603,14 +604,59 @@
         </div>
 
         <p class="reveal" style="--i: 3; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
-            💡 Bookmark <code>index.html</code> for instant one-click access. First save will prompt for a
-            <a href="https://github.com/settings/tokens" target="_blank" style="color: var(--accent-blue);">GitHub PAT</a>
-            — it's stored locally in your browser.
+            💡 Bookmark <code>index.html</code> for instant one-click access — no server needed.
         </p>
         <div class="step-number">03</div>
     </div>
 
-    <!-- ==================== STEP 4: Done / Results ==================== -->
+    <!-- ==================== STEP 4: Your First Save ==================== -->
+    <div class="step">
+        <div class="buzzword buzzword-green">🔐 ONE-TIME SETUP</div>
+        <div class="step-label reveal" style="color: var(--accent-green);">STEP 4</div>
+        <h1 class="step-title reveal">Save — and why you need a PAT</h1>
+        <p class="step-subtitle reveal">
+            When you click <strong>💾 Save</strong> for the first time, you'll be asked for a
+            <strong>GitHub Personal Access Token (PAT)</strong>. Here's why:
+        </p>
+
+        <div class="cards-row reveal" style="--i: 2;">
+            <div class="mini-card" style="cursor: default;">
+                <div class="mini-card-icon">🤔</div>
+                <div class="mini-card-title">Why?</div>
+                <div class="mini-card-desc">Your presentations live on GitHub. To save changes from the browser,
+                    GitHub needs to verify it's really you — a PAT is your secure password for that.</div>
+            </div>
+            <div class="mini-card" style="cursor: default;">
+                <div class="mini-card-icon">🔒</div>
+                <div class="mini-card-title">Is it safe?</div>
+                <div class="mini-card-desc">Yes — the PAT is stored <strong>only in your browser's local
+                        storage</strong>. It never leaves your machine and is never sent to any third party.</div>
+            </div>
+            <div class="mini-card" style="cursor: default;">
+                <div class="mini-card-icon">⚡</div>
+                <div class="mini-card-title">How long?</div>
+                <div class="mini-card-desc">About 30 seconds. You do it once, then every future save is a single click.
+                </div>
+            </div>
+        </div>
+
+        <div class="code-block reveal" style="--i: 3;">
+            <span class="code-comment"># Create your PAT at:</span><br>
+            <span class="code-prompt">🔗</span> <a href="https://github.com/settings/tokens" target="_blank"
+                rel="noopener"
+                style="color: var(--accent-blue); text-decoration: none;">github.com/settings/tokens</a><br>
+            <br>
+            <span class="code-comment"># Or just ask Copilot:</span><br>
+            <span class="code-string">"Help me create a GitHub PAT for saving presentations"</span>
+        </div>
+
+        <p class="reveal" style="--i: 4; margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted);">
+            💡 Select only the <code>repo</code> scope when creating your token. That's all that's needed.
+        </p>
+        <div class="step-number">04</div>
+    </div>
+
+    <!-- ==================== STEP 5: Done / Results ==================== -->
     <div class="step gradient-bg">
         <div class="hero-glow" style="bottom: -200px; left: -100px; background: #10b981;"></div>
         <div class="buzzword buzzword-green">✨ THREE FORMATS</div>
@@ -642,14 +688,14 @@
         <p class="reveal" style="--i: 4; margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted);">
             ↑ These are real presentations generated from AKVA's Nautilus deep farming data.
         </p>
-        <div class="step-number">04</div>
+        <div class="step-number">05</div>
     </div>
 
     <!-- ==================== OPTIONAL: MCP & CLI ==================== -->
     <div class="step">
         <div class="buzzword buzzword-purple">⚡ OPTIONAL</div>
         <div class="step-label reveal" style="color: var(--accent-purple);">ADD-ON</div>
-        <h1 class="step-title reveal">Supercharge with MCP & CLI</h1>
+        <h1 class="step-title reveal">Supercharge with MCP &amp; CLI</h1>
         <p class="step-subtitle reveal">
             Give Copilot direct access to your tools. Ask it to configure MCP servers for GitHub, Git,
             and more — so it can create branches, commit, push, and manage repos from chat.
