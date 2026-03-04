@@ -16,7 +16,7 @@ presentations/
 │   ├── nav.js                ← Slide navigation + keyboard controls
 │   ├── edit-mode.css         ← Floating toolbar & edit indicators
 │   └── edit-mode.js          ← contenteditable toggle + GitHub save
-├── index.html                ← Dashboard linking all presentations
+├── index.html                ← Dashboard (project cards auto-regenerated from folders)
 ├── <project-name>/
 │   ├── presentation.html     ← Full 5-10 slide deck (dark theme)
 │   ├── presentation-short.html  ← 3-slide executive summary (dark theme)
@@ -472,7 +472,7 @@ margin-top: calc(-1 * clamp(1rem, 2vw, 2rem));
 2. **Create all three formats** using the design system above
 3. **Push to GitHub** - Into the project subfolder
 4. **Auto-deploy** - GitHub Pages serves at `<user>.github.io/Presentations/<project>/`
-5. **Update dashboard** - Add a card to `index.html`
+5. **Regenerate dashboard** - Scan project folders and rebuild `index.html` project cards (see workflow)
 
 ## Tips
 
