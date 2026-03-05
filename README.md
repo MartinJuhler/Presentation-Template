@@ -23,6 +23,7 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
 | 🧭 **Auto navigation** | Dot indicators + slide counter generated automatically from your slides |
 | 📄 **One-pager template** | A4 print-optimized layout for executive one-pagers |
 | 🤖 **AI coding agent skills** | Pre-built rules, skills, and workflows for AI assistants |
+| 🔄 **Sync server** | Auto-sync local files after browser saves via `node sync-server.js` |
 | 🌐 **Zero dependencies** | No build step. Pure HTML/CSS/JS. Open locally or deploy anywhere. |
 
 ---
@@ -48,6 +49,11 @@ Create stunning slide decks, executive summaries, and one-pagers using pure HTML
 
 5. **Preview** — Open any HTML file directly in your browser — bookmark `index.html` for easy access
 6. **Edit & Save** — Click ⚡ Edit on any presentation to make quick changes, then 💾 Save to push to GitHub (see [PAT Setup](#-pat-setup-one-time) below)
+7. **Sync** *(optional)* — Start the sync server so local files stay in sync after browser saves:
+
+   ```bash
+   node sync-server.js
+   ```
 
 ### 🔌 Add-on: Supercharge with MCP *(optional)*
 
@@ -79,6 +85,41 @@ To save edits from the browser, you need a GitHub Personal Access Token (PAT) wi
 4. Under **Permissions → Contents**, select **Read and write**
 5. Generate and paste the token when prompted in the browser
 
+### Cross-Browser Token Sharing
+
+Since `localStorage` is per-browser, you can share your PAT across all browsers by creating a `config.local.js` file:
+
+```js
+// config.local.js — gitignored, never committed
+window.__GH_PAT = 'github_pat_YOUR_TOKEN_HERE';
+```
+
+Then add this script tag to your HTML files (before `edit-mode.js`):
+
+```html
+<script src="../config.local.js" onerror=""></script>
+```
+
+The `onerror=""` ensures it works silently if the file doesn't exist.
+
+---
+
+## 🔄 Sync Server (Optional)
+
+When you edit presentations in the browser and save to GitHub, your local files don't update automatically. The **sync server** bridges this gap:
+
+```bash
+node sync-server.js
+```
+
+**How it works:**
+1. You click 💾 Save in the browser → file saved to GitHub via API
+2. After a successful save, the browser calls `http://localhost:3939/pull`
+3. The sync server runs `git pull` to update your local files
+4. Your IDE sees the changes immediately
+
+**Without the sync server**, saves still work to GitHub — you just need to manually `git pull` to see changes locally.
+
 ---
 
 ## 🌐 Public Sharing (Optional)
@@ -101,7 +142,7 @@ Presentations/
 │   ├── styles.css             # Design system: tokens, layouts, animations
 │   ├── nav.js                 # Scroll navigation + reveal animation engine
 │   ├── edit-mode.css          # Edit mode styles
-│   └── edit-mode.js           # In-browser editing + GitHub save
+│   └── edit-mode.js           # In-browser editing + GitHub save (SHA caching)
 │
 ├── akva-nautilus/             # ← Live example — copy this to start your own
 │   ├── presentation.html      # Full 6-slide deck
@@ -116,6 +157,7 @@ Presentations/
 │   ├── rules/                 # Design quality & typography rules
 │   └── workflows/             # Step-by-step workflows
 │
+├── sync-server.js             # Local sync server (auto git-pull after save)
 ├── index.html                 # Dashboard linking to all projects
 └── README.md                  # This file
 ```
@@ -148,6 +190,15 @@ The design system in `shared/styles.css` provides:
     <h3>Card Title</h3>
     <p>Card content here.</p>
 </div>
+```
+
+### Card Variants
+
+```html
+<div class="card card-danger">   <!-- Red left border -->
+<div class="card card-warn">     <!-- Amber left border -->
+<div class="card card-ok">       <!-- Green left border -->
+<div class="card card-info">     <!-- Blue left border -->
 ```
 
 ### Badges & Labels
@@ -202,10 +253,11 @@ Click the **⚡ Edit** button on any presentation to toggle inline editing:
 - Click **💾 Save** to commit changes directly to your GitHub repo
 - Your first save will ask for a GitHub PAT ([see setup above](#-pat-setup-one-time))
 - The token is stored in `localStorage` — you only enter it once
+- **SHA caching** ensures consecutive saves work without conflicts
 
 **Don't have a PAT yet?** The save prompt includes an AI prompt you can copy-paste to have your AI assistant create one for you.
 
-**Repo auto-detection**: For custom hosting, add meta tags to your HTML `<head>`:
+**Repo auto-detection**: For GitHub Pages, OWNER and REPO are auto-detected from the URL. For custom hosting, add meta tags to your HTML `<head>`:
 
 ```html
 <meta name="gh-owner" content="YOUR-USERNAME">
@@ -228,7 +280,7 @@ This framework is designed to be **most powerful when paired with an AI coding a
 ### Supported AI Assistants
 
 | Assistant | How to use |
-|-----------|-----------|
+|-----------|------------|
 | **Antigravity** | Skills and workflows are auto-detected from `.agent/` |
 | **Cursor** | Add `.cursorrules` or use the `.agent/` folder |
 | **Windsurf** | Reads `.agent/` configuration automatically |
@@ -238,7 +290,7 @@ This framework is designed to be **most powerful when paired with an AI coding a
 ### MCP Servers That Pair Well
 
 | MCP Server | Purpose |
-|------------|---------|
+|------------|--------|
 | **MS365** | Read OneNote notebooks, Outlook emails, OneDrive files |
 | **Notion** | Pull content from Notion databases and pages |
 | **Obsidian** | Access Obsidian vault notes |
@@ -253,7 +305,7 @@ This framework is designed to be **most powerful when paired with an AI coding a
 
 "Turn my meeting notes from last Tuesday into an executive one-pager"
 
-"Create a presentation from the product brief in my OneDrive, 
+"Create a presentation from the product brief in my OneDrive,
  focus on the competitive analysis section"
 
 "Read the wiki page about our architecture and make a technical overview deck"

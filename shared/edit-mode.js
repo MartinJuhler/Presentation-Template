@@ -66,40 +66,26 @@
 
     // ── Token management ──
     function getToken() {
+        // Prefer shared config file (works across all browsers)
+        if (window.__GH_PAT) return window.__GH_PAT;
         return localStorage.getItem('gh-pat');
     }
 
     function promptForToken() {
         const token = prompt(
-            'Enter your GitHub Personal Access Token (PAT) to save directly to GitHub.\n' +
-            'It needs "repo" or "contents:write" scope.\n\n' +
-            'Press Cancel to save locally as a file download instead.'
+            '🔑  GITHUB SAVE — One-Time Setup\n\n' +
+            'Enter your GitHub Personal Access Token (PAT)\n' +
+            'with "contents:write" scope.\n\n' +
+            'Don\'t have one? Ask your AI assistant:\n' +
+            '"Create a GitHub fine-grained PAT with\n' +
+            ' contents:write scope for my repo"\n\n' +
+            'Your token is stored locally and never shared.'
         );
         if (token && token.trim()) {
             localStorage.setItem('gh-pat', token.trim());
             return token.trim();
         }
         return null;
-    }
-
-    // ── Save locally (download) ──
-    function downloadLocally() {
-        try {
-            const htmlContent = getCleanHTML();
-            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = getFileName();
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showToast('✅ Saved locally!', 'success');
-        } catch (error) {
-            console.error('Download failed:', error);
-            showToast(`❌ ${error.message}`, 'error', 5000);
-        }
     }
 
     // ── Determine file path from meta tag or URL ──
@@ -109,9 +95,7 @@
 
         // Fallback: derive from URL path
         const path = window.location.pathname;
-        // Remove leading slash and any GitHub Pages prefix
         const parts = path.split('/').filter(Boolean);
-        // For github.io, first segment is repo name
         if (window.location.hostname.includes('github.io')) {
             return parts.slice(1).join('/') || 'index.html';
         }
@@ -140,19 +124,13 @@
         return '<!DOCTYPE html>\n' + clone.outerHTML;
     }
 
-    // ── Get filename for download ──
-    function getFileName() {
-        const filePath = getFilePath();
-        if (filePath) return filePath.split('/').pop();
-        // Fallback: derive from URL
-        const urlParts = window.location.pathname.split('/').filter(Boolean);
-        return urlParts.pop() || 'presentation.html';
-    }
-
     // ── Toggle edit mode ──
     const toggleBtn = document.getElementById('editToggle');
     const saveBtn = document.getElementById('editSave');
     let isEditing = false;
+
+    // Cache SHA per file path so subsequent saves don't race with sync
+    const shaCache = {};
 
     toggleBtn.addEventListener('click', () => {
         isEditing = !isEditing;
@@ -162,7 +140,6 @@
 
         const editableElements = document.querySelectorAll(EDITABLE_SELECTORS);
         editableElements.forEach(el => {
-            // Don't make toolbar elements editable
             if (el.closest('.edit-toolbar') || el.closest('.edit-toast')) return;
             if (isEditing) {
                 el.setAttribute('contenteditable', 'true');
@@ -178,48 +155,53 @@
         }
     });
 
-    // ── Save (GitHub with local fallback) ──
+    // ── Save button ──
     saveBtn.addEventListener('click', async () => {
-        let token = getToken();
-        if (!token) {
-            token = promptForToken();
-            if (!token) {
-                // No PAT provided — fall back to local download
-                downloadLocally();
-                return;
-            }
-        }
-
-        const filePath = getFilePath();
-        if (!filePath) {
-            showToast('Cannot determine file path', 'error');
-            return;
-        }
-
-        showToast('Saving to GitHub...', 'info', 10000);
         saveBtn.disabled = true;
         saveBtn.textContent = '⏳ Saving...';
 
         try {
+            // Get or request PAT
+            let token = getToken();
+            if (!token) {
+                token = promptForToken();
+                if (!token) {
+                    showToast(
+                        '💡 A GitHub PAT is needed to save. Ask your AI assistant to help you create one!',
+                        'info', 6000
+                    );
+                    return;
+                }
+            }
+
+            const filePath = getFilePath();
+            if (!filePath) {
+                showToast('Cannot determine file path', 'error');
+                return;
+            }
+
+            showToast('Saving to GitHub...', 'info', 10000);
+
             const htmlContent = getCleanHTML();
 
-            // GitHub API: Get current file SHA
             const apiBase = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}`;
             const headers = {
                 'Authorization': `token ${token}`,
                 'Accept': 'application/vnd.github.v3+json'
             };
 
-            const getResponse = await fetch(`${apiBase}?ref=${BRANCH}`, { headers });
-            if (getResponse.status === 401 || getResponse.status === 403) {
-                localStorage.removeItem('gh-pat');
-                throw new Error('Invalid or expired token. Please try again.');
-            }
-
-            let sha = null;
-            if (getResponse.ok) {
-                const data = await getResponse.json();
-                sha = data.sha;
+            // Use cached SHA if available, otherwise fetch from GitHub
+            let sha = shaCache[filePath] || null;
+            if (!sha) {
+                const getResponse = await fetch(`${apiBase}?ref=${BRANCH}`, { headers });
+                if (getResponse.status === 401 || getResponse.status === 403) {
+                    localStorage.removeItem('gh-pat');
+                    throw new Error('Invalid or expired token. Please try again.');
+                }
+                if (getResponse.ok) {
+                    const data = await getResponse.json();
+                    sha = data.sha;
+                }
             }
 
             // GitHub API: Create/update file
@@ -244,10 +226,27 @@
 
             if (!putResponse.ok) {
                 const err = await putResponse.json();
-                throw new Error(err.message || `HTTP ${putResponse.status}`);
+                throw new Error(`${filePath} ${err.message || `HTTP ${putResponse.status}`}`);
             }
 
-            showToast('✅ Saved to GitHub!', 'success');
+            // Cache the new SHA from the response for next save
+            const putData = await putResponse.json();
+            if (putData.content && putData.content.sha) {
+                shaCache[filePath] = putData.content.sha;
+            }
+
+            // Auto-sync: pull changes to local files via sync server
+            try {
+                const syncRes = await fetch('http://localhost:3939/pull', { method: 'POST' });
+                const syncData = await syncRes.json();
+                if (syncData.ok) {
+                    showToast('✅ Saved & synced!', 'success', 3000);
+                } else {
+                    showToast('✅ Saved to GitHub! Sync failed — run: git pull', 'info', 5000);
+                }
+            } catch {
+                showToast('✅ Saved to GitHub! To auto-sync local files, run: node sync-server.js', 'info', 6000);
+            }
         } catch (error) {
             console.error('Save failed:', error);
             showToast(`❌ ${error.message}`, 'error', 5000);

@@ -10,7 +10,8 @@
 
     if (!slides.length || !navDots || !navCounter) return;
 
-    // Generate nav dots
+    // Generate nav dots (clear first — saved HTML may already have dots)
+    navDots.innerHTML = '';
     slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
